@@ -1,0 +1,57 @@
+@import "src/variables";
+
+.left_side_menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 160px;
+  height: 100vh;
+  background-color: $dark-blue;
+}
+
+.logo {
+  font-size: 30px;
+  color: $white;
+  font-weight: 600;
+  line-height: 45px;
+}
+
+.menu {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+
+  padding-left: 15px;
+}
+
+.menu_element {
+  display: flex;
+  width: 100%;
+  height: 53px;
+  align-items: center;
+}
+
+.title {
+  color: $white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  padding-left: 8px;
+}
+
+.sign_out {
+  display: flex;
+  width: 100%;
+  height: 53px;
+  padding-left: 15px;
+  align-items: center;
+}
+
+.sign_out_title {
+  color: $violet;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  padding-left: 10px;
+}
