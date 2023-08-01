@@ -9,7 +9,7 @@ const MenuItem = (menuItem: menuItem) => {
   };
   return (
     <div onClick={onTabChange} className={styles.menu_element}>
-      <img alt="Dashboard" src={menuItem.img} />
+      <img alt={menuItem.title} src={menuItem.img} />
       <div className={styles.title}>{menuItem.title}</div>
     </div>
   );
