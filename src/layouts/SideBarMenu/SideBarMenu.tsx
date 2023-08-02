@@ -5,7 +5,7 @@ import Dashboard from "../../assets/Dashboard.svg";
 import Sequence from "../../assets/Sequence.svg";
 import SignOut from "../../assets/SignOut.svg";
 import Stuff from "../../assets/Stuff.svg";
-import { MenuItem } from "../MenuElement/MenuElement";
+import { MenuItem } from "../../Components/MenuElement/MenuElement";
 import styles from "./styles.module.scss";
 
 const SideBarMenu = () => {

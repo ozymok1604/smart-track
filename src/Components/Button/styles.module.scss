@@ -1,0 +1,197 @@
+@import "src/variables";
+.primary {
+  position: relative;
+  width: 116px;
+  height: 46px;
+  border: none;
+  border-radius: 20px;
+  color: $white;
+  background-color: $turquoise;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.primary:hover {
+  cursor: pointer;
+  border: 2px solid $turquoise;
+
+  background: $olive-gradient;
+}
+.primary:active {
+  border: 2px solid $dark-blue;
+  color: $dark-blue;
+  background: $olive-gradient;
+}
+
+.add_container {
+  display: flex;
+  width: 170px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.add_container:hover {
+  cursor: pointer;
+}
+
+.add {
+  color: $turquoise;
+  font-size: 14px;
+  font-weight: 500 !important;
+  line-height: 21px;
+}
+.add:hover {
+  color: $turquoise;
+  font-size: 14px;
+  font-weight: 700 !important;
+  line-height: 21px;
+}
+.add:active {
+  color: $dark-blue;
+}
+
+.secondary {
+  width: 140px;
+  height: 50px;
+  color: $turquoise;
+  border: none;
+  background-color: $white;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.secondary:hover {
+  cursor: pointer;
+  border: 2px solid $turquoise;
+  border-radius: 20px;
+  background-color: $white;
+}
+.secondary:active {
+  color: $dark-blue;
+  border: 2px solid $dark-blue;
+  background-color: $white;
+}
+
+.reset {
+  position: relative;
+  width: 60px;
+  height: 25px;
+  border: 2px solid $turquoise;
+  border-radius: 20px;
+  color: $turquoise;
+  background-color: $white;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.reset:hover {
+  cursor: pointer;
+  border: 2px solid $turquoise;
+  border-radius: 20px;
+  color: $white;
+  background: $olive-gradient;
+}
+.reset:active {
+  border: 2px solid $dark-blue;
+  border-radius: 20px;
+  color: $dark-blue;
+  background: $olive-gradient;
+}
+
+.stop {
+  position: relative;
+  width: 100px;
+  height: 25px;
+  border: 2px solid $orange;
+  border-radius: 20px;
+  color: $orange;
+  background-color: $white;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+}
+.stop:hover {
+  cursor: pointer;
+
+  border: 2px solid $orange;
+  border-radius: 20px;
+  color: $white;
+  background: $light-orange;
+}
+.stop:active {
+  border: 2px solid $dark-blue;
+  border-radius: 20px;
+  color: $dark-blue;
+  background: $light-orange;
+}
+
+.small {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: 2px solid $turquoise;
+  border-radius: 20px;
+  color: $turquoise;
+  background-color: $white;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+}
+.small:hover {
+  cursor: pointer;
+
+  border: 2px solid $turquoise;
+  border-radius: 20px;
+  color: $white;
+  background: $olive-gradient;
+}
+.small:active {
+  border: 2px solid rgba(33, 33, 85, 1);
+  border-radius: 20px;
+  color: $dark-blue;
+  background: $olive-gradient;
+}
+
+.out_container {
+  display: flex;
+  width: 150px;
+  height: 50px;
+  color: $violet;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+  border: 2px solid $white;
+}
+.out_container:hover {
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid $turquoise;
+}
+
+.out_container:active {
+  color: $dark-blue;
+  border: 2px solid $turquoise;
+}
+
+.connect {
+  width: 175px;
+  height: 45px;
+  border: none;
+  border-radius: 20px 0px 20px 20px;
+  background-color: $turquoise;
+  color: $white;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.connect:hover {
+  background: $olive-gradient;
+  border: 2px solid $turquoise;
+  cursor: pointer;
+}
+.connect:active {
+  background-color: $white;
+  color: $turquoise;
+  border: 2px solid $turquoise;
+}

@@ -16,3 +16,8 @@ type menuItem = {
   img: any;
   link: string;
 };
+
+type ButtonProps = {
+  title: string;
+  type: string;
+};

@@ -1,4 +1,4 @@
-import { SideBarMenu } from "../../Components/SideBarMenu";
+import { SideBarMenu } from "../../layouts/SideBarMenu";
 
 const Allerts = () => {
   return <SideBarMenu />;

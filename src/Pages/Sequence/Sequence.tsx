@@ -1,4 +1,4 @@
-import { SideBarMenu } from "../../Components/SideBarMenu";
+import { SideBarMenu } from "../../layouts/SideBarMenu";
 
 import styles from "./styles.module.scss";
 

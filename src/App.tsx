@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { SideBarMenu } from "./Components/SideBarMenu";
+import { SideBarMenu } from "./layouts/SideBarMenu";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Dashboard } from "./Pages/Dashboard";
 import { Stuff } from "./Pages/Stuff";
