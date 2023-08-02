@@ -12,10 +12,10 @@ const SideBarMenu = () => {
   const tab = useSelector((state: SmartTrackState) => state.tab);
 
   const menuList = [
-    { title: "Dashboard", img: Dashboard },
-    { title: "Stuff", img: Stuff },
-    { title: "Allerts", img: Allerts },
-    { title: "Sequence", img: Sequence },
+    { title: "Dashboard", img: Dashboard, link: "/" },
+    { title: "Stuff", img: Stuff, link: "/stuff" },
+    { title: "Allerts", img: Allerts, link: "/allerts" },
+    { title: "Sequence", img: Sequence, link: "/sequence" },
   ];
 
   console.log(tab);

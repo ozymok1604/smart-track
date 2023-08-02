@@ -14,4 +14,5 @@ type DispatchType = (args: TrackAction) => TrackAction;
 type menuItem = {
   title: string;
   img: any;
+  link: string;
 };
