@@ -171,7 +171,8 @@
 
 .out_container:active {
   color: $dark-blue;
-  border: 2px solid $turquoise;
+
+  border: 2px solid $dark-blue;
 }
 
 .connect {
