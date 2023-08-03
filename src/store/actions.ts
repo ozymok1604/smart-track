@@ -6,3 +6,10 @@ export const changeTab = (tab: Tab) => {
     tab,
   };
 };
+
+export const openModal = (isOpen: IsOpen) => {
+  return {
+    type: actionTypes.OPEN_MODAL,
+    isOpen,
+  };
+};

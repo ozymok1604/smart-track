@@ -1,12 +1,26 @@
 type Tab = string;
 
-type TabAction = {
+type IsOpen = boolean;
+
+type Option = {
+  title: string;
+  value: string;
+};
+
+type TrackAction = {
   type: string;
   tab: Tab;
+  isOpen: IsOpen;
+};
+
+type ModalAction = {
+  type: string;
+  isOpen: IsOpen;
 };
 
 type SmartTrackState = {
   tab: string;
+  isOpen: IsOpen;
 };
 
 type DispatchType = (args: TrackAction) => TrackAction;

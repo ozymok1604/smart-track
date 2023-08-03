@@ -7,6 +7,7 @@ import SignOut from "../../assets/SignOut.svg";
 import Stuff from "../../assets/Stuff.svg";
 import { MenuItem } from "../../Components/MenuElement/MenuElement";
 import styles from "./styles.module.scss";
+import { Button } from "../../Components/Button";
 
 const SideBarMenu = () => {
   const tab = useSelector((state: SmartTrackState) => state.tab);
@@ -28,10 +29,7 @@ const SideBarMenu = () => {
           return <MenuItem {...item} />;
         })}
       </div>
-      <div className={styles.sign_out}>
-        <img alt="SignOut" src={SignOut} />
-        <div className={styles.sign_out_title}>Sign Out</div>
-      </div>
+      <Button title="Sign Out" type="signOut" />
     </div>
   );
 };

@@ -19,9 +19,13 @@
 }
 
 .container {
-  width: 140px;
+  width: 10vw;
   padding-left: 10px;
+  border: 2px solid transparent;
   border-radius: 20px 0px 0px 20px;
+}
+.container:hover {
+  border: 2px solid $turquoise;
 }
 
 .filtered_svg {

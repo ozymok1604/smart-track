@@ -1,0 +1,48 @@
+@import "src/variables";
+.flex_container {
+  display: flex;
+  width: 350px;
+  flex-direction: column;
+  align-items: center;
+  background-color: $light-grey;
+  border-right: 1px solid $turquoise;
+}
+
+.doctor_name {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.doctor_profession {
+  font-size: 14px;
+  font-weight: 500;
+  color: $asphalt;
+  padding-bottom: 20px;
+}
+
+.line_options {
+  width: 88%;
+  padding-bottom: 30px;
+
+  padding-top: 30px;
+  justify-content: space-between;
+  display: flex;
+  border-top: 1px solid $turquoise;
+}
+
+.right_container {
+  display: flex;
+  width: 88%;
+  padding-top: 10px;
+  justify-content: flex-end;
+}
+
+.left_container {
+  display: flex;
+  width: 89%;
+  justify-content: flex-start;
+}
+
+.count {
+  color: $orange;
+}

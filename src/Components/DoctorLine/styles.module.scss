@@ -1,0 +1,14 @@
+@import "src/variables";
+
+.doctor_line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f6f8ff;
+  width: 83vw;
+  padding: 2vh;
+  margin-bottom: 10px;
+  margin-left: 12vw;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
