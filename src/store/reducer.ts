@@ -1,7 +1,7 @@
 import * as actionTypes from "./actionTypes";
 
 const initialState: SmartTrackState = {
-  tab: "",
+  tab: "Doctors",
   isOpen: false,
 };
 

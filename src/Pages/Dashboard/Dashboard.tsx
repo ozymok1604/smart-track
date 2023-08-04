@@ -11,6 +11,11 @@ import styles from "./styles.module.scss";
 
 const Dashboard = () => {
   const isOpen = useSelector((state: SmartTrackState) => state.isOpen);
+
+  const dashboardInformation = JSON.parse(
+    localStorage.getItem("dashboardInformation") || "[]"
+  );
+
   return (
     <div className={styles.page}>
       <SideBarMenu />

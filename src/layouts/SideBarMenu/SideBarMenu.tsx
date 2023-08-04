@@ -10,16 +10,12 @@ import styles from "./styles.module.scss";
 import { Button } from "../../Components/Button";
 
 const SideBarMenu = () => {
-  const tab = useSelector((state: SmartTrackState) => state.tab);
-
   const menuList = [
     { title: "Dashboard", img: Dashboard, link: "/" },
     { title: "Stuff", img: Stuff, link: "/stuff" },
     { title: "Allerts", img: Allerts, link: "/allerts" },
     { title: "Sequence", img: Sequence, link: "/sequence" },
   ];
-
-  console.log(tab);
 
   return (
     <div className={styles.left_side_menu}>

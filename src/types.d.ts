@@ -2,6 +2,27 @@ type Tab = string;
 
 type IsOpen = boolean;
 
+type DoctorRow = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  allerts?: string[];
+  rooms?: string[];
+};
+
+type RowType = string;
+
+type AssistantRow = {
+  name: string;
+  email: string;
+  phone: string;
+};
+type ReceptionistRow = {
+  name: string;
+  email: string;
+  phone: string;
+};
+
 type Option = {
   title: string;
   value: string;

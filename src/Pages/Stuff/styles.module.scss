@@ -1,0 +1,51 @@
+@import "src/variables";
+.page {
+  display: flex;
+  height: 100vh;
+  background-color: $light-grey;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.page_content {
+  width: 89vw;
+  display: flex;
+  flex-direction: column;
+  margin-left: 11vw;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 35vw;
+}
+
+.navigationItem {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+  position: relative;
+}
+.navigationItem:hover {
+  cursor: pointer;
+  color: $turquoise;
+}
+.navigationItem:before {
+  content: "";
+  position: absolute;
+  left: 25%;
+  bottom: 0;
+  width: 50%; /* or 100px */
+}
+
+.button_container {
+  padding-right: 100px;
+}
