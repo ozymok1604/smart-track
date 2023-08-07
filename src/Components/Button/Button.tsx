@@ -7,14 +7,24 @@ import Out from "../../assets/SignOut.svg";
 import ActiveOut from "../../assets/ActiveSignOut.svg";
 import { useState } from "react";
 
-const Button = ({ title, type }: { title: any; type: any }) => {
+const Button = ({
+  onClick,
+  title,
+  type,
+}: {
+  onClick?: any;
+  title: string;
+  type: string;
+}) => {
   const [isHover, setHover] = useState(false);
   const [isActive, setActive] = useState(false);
 
   return (
-    <>
+    <div onClick={onClick}>
       {type == "primary" ? (
-        <button className={styles.primary}>{title}</button>
+        <button onClick={onClick} className={styles.primary}>
+          {title}
+        </button>
       ) : type == "add" ? (
         <div
           onMouseOver={() => setHover(true)}
@@ -50,7 +60,7 @@ const Button = ({ title, type }: { title: any; type: any }) => {
       ) : (
         <button className={styles.small}>{title}</button>
       )}
-    </>
+    </div>
   );
 };
 

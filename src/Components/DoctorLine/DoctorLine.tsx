@@ -2,13 +2,13 @@ import { useDispatch } from "react-redux";
 import { DoctorCard } from "../DoctorCard";
 import { HospitalWard } from "../HospitalWard";
 import styles from "./styles.module.scss";
-import { openModal } from "../../store";
+import { openWardOptionsModal } from "../../store";
 
 const DoctorLine = () => {
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
-    dispatch(openModal(true));
+    dispatch(openWardOptionsModal(true));
   };
   return (
     <div className={styles.doctor_line}>

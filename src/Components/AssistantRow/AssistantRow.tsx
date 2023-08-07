@@ -22,7 +22,6 @@ const AssistantRow = ({
       <div>{row.name}</div>
       <div>{row.email}</div>
       <div>{row.phone}</div>
-      <div>{row.name}</div>
 
       <div className={styles.actions}>
         {!receptionistRow && (

@@ -10,7 +10,9 @@ import { SideBarMenu } from "../../layouts/SideBarMenu";
 import styles from "./styles.module.scss";
 
 const Dashboard = () => {
-  const isOpen = useSelector((state: SmartTrackState) => state.isOpen);
+  const isOpen = useSelector(
+    (state: SmartTrackState) => state.isOpenWardOptions
+  );
 
   const dashboardInformation = JSON.parse(
     localStorage.getItem("dashboardInformation") || "[]"

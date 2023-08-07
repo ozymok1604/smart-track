@@ -2,12 +2,22 @@ type Tab = string;
 
 type IsOpen = boolean;
 
+type Count = number;
+
 type DoctorRow = {
   name?: string;
   email?: string;
   phone?: string;
   allerts?: string[];
   rooms?: string[];
+};
+
+type Doctor = {
+  type?: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  allerts?: any[];
 };
 
 type RowType = string;
@@ -31,17 +41,18 @@ type Option = {
 type TrackAction = {
   type: string;
   tab: Tab;
-  isOpen: IsOpen;
-};
-
-type ModalAction = {
-  type: string;
-  isOpen: IsOpen;
+  count: Count;
+  isOpenWardOptions: IsOpen;
+  isOpenAddStuffModal: IsOpen;
+  worker: Doctor;
 };
 
 type SmartTrackState = {
   tab: string;
-  isOpen: IsOpen;
+  isOpenWardOptions: IsOpen;
+  count: Count;
+  isOpenAddStuffModal: IsOpen;
+  worker: Doctor;
 };
 
 type DispatchType = (args: TrackAction) => TrackAction;

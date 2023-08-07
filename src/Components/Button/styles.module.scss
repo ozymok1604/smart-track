@@ -25,7 +25,7 @@
 
 .add_container {
   display: flex;
-  width: 170px;
+  width: 160px;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -34,15 +34,16 @@
 }
 
 .add {
+  width: 100px;
   color: $turquoise;
   font-size: 14px;
-  font-weight: 500 !important;
+  font-weight: 500;
   line-height: 21px;
 }
 .add:hover {
   color: $turquoise;
   font-size: 14px;
-  font-weight: 700 !important;
+  font-weight: 600;
   line-height: 21px;
 }
 .add:active {

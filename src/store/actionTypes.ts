@@ -1,2 +1,5 @@
 export const CHANGE_TAB = "CHANGE_TAB";
-export const OPEN_MODAL = "OPEN_MODAL";
+export const OPEN_OPTIONS_MODAL = "OPEN_OPTIONS_MODAL";
+export const CHANGE_COUNT = "CHANGE_COUNT";
+export const OPEN_ADD_STUFF_MODAL = "OPEN_ADD_STUFF_MODAL";
+export const ADD_NEW_STUFF = "ADD_NEW_STUFF";

@@ -1,0 +1,215 @@
+@import "src/variables";
+
+.modal {
+  display: flex; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 1; /* Sit on top */
+
+  width: 88vw; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  backdrop-filter: contrast(70%);
+}
+
+.modal_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  align-items: flex-start;
+  padding: 20px;
+  gap: 15px;
+  width: 27vw;
+  height: fit-content;
+  border: none;
+  border-radius: 20px;
+  background-color: $white;
+  box-shadow: 0px 4px 20px 0px #202b5d1f;
+}
+
+.close:hover {
+  cursor: pointer;
+  filter: invert(5%) sepia(99%) saturate(82%) hue-rotate(1deg) brightness(0%)
+    contrast(106%);
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header_title {
+  padding-top: 35px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  padding-left: 20px;
+}
+
+.allert_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.allert_name {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.assistant {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $yellow;
+  color: $yellow;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $light-yellow;
+}
+
+.doctor {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $sky;
+  color: $sky;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-blue;
+}
+
+.patient {
+  display: flex;
+  width: 45px;
+  height: 45px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $olive-green;
+  color: $olive-green;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-green;
+}
+
+.financial {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-violet;
+  color: $light-violet;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-viloet;
+}
+
+.emergency {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $red;
+  color: $red;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-red;
+}
+
+.empty {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $bright-green;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $white;
+}
+
+.allerts_line {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+  flex-direction: row;
+}
+.empty:hover {
+  cursor: pointer;
+}
+.emergency:hover {
+  cursor: pointer;
+}
+.assistant:hover {
+  cursor: pointer;
+}
+.doctor:hover {
+  cursor: pointer;
+}
+.financial:hover {
+  cursor: pointer;
+}
+.patientIn:hover {
+  cursor: pointer;
+}
+
+.footer {
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+}

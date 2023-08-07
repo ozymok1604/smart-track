@@ -44,5 +44,16 @@
 }
 
 .count {
+  width: 10px;
   color: $orange;
+}
+
+.change_count {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+}
+.change_count:hover {
+  color: $turquoise;
+  cursor: pointer;
 }

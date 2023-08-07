@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import styles from "./styles.module.scss";
-import { openModal } from "../../store";
+import { openWardOptionsModal } from "../../store";
 import Close from "../../assets/Close.svg";
 
 const OptionsModal = () => {
@@ -20,7 +20,7 @@ const OptionsModal = () => {
     { title: "Empty", value: "empty" },
   ];
   const handleCloseModal = () => {
-    dispatch(openModal(false));
+    dispatch(openWardOptionsModal(false));
   };
   return (
     <div onClick={handleCloseModal} className={styles.modal}>

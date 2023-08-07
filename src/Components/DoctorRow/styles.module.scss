@@ -40,42 +40,49 @@
   border: none;
   border-radius: 50%;
   background-color: $blue;
+  border: 2px solid transparent;
 }
 .doctor {
   height: 15px;
   width: 15px;
   border-radius: 50%;
   background-color: $violet;
+  border: 2px solid transparent;
 }
-.finances {
+.financial {
   height: 15px;
   width: 15px;
   border-radius: 50%;
   background-color: $yellow;
+  border: 2px solid transparent;
 }
 .patient {
   height: 15px;
   width: 15px;
   border-radius: 50%;
   background-color: $dark-green;
+  border: 2px solid transparent;
 }
 .emergency {
   height: 15px;
   width: 15px;
   border-radius: 50%;
   background-color: $red;
+  border: 2px solid transparent;
 }
 .empty {
   height: 15px;
   width: 15px;
   border-radius: 50%;
+  border: 2px solid $light-asphalt;
   background-color: $white;
 }
 
 .allerts_container {
   width: 8vw;
   display: flex;
-  justify-content: space-between;
+  gap: 1px;
+  justify-content: flex-start;
 }
 
 .room {

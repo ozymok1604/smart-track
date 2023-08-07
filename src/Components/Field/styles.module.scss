@@ -1,12 +1,12 @@
 @import "src/variables";
 
 .field_container {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .input {
-  width: 380px;
   height: 45px;
   border-radius: 20px;
   border: 1px solid $light-asphalt;

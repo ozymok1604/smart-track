@@ -10,18 +10,18 @@ const DoctorRow = ({ row, index }: { row: any; index: number }) => {
       <div className={styles.index}>
         <div className={styles.text}>{index + 1}</div>
       </div>
-      <div>{row.name}</div>
-      <div>{row.email}</div>
-      <div>{row.phone}</div>
+      <div>{row?.name}</div>
+      <div>{row?.email}</div>
+      <div>{row?.phone}</div>
 
       <div className={styles.allerts_container}>
-        {row.allerts.map((allert: string) => {
+        {row?.allerts?.map((allert: string) => {
           return <div className={styles[allert]}></div>;
         })}
       </div>
       <div>
         <span>Rooms </span>
-        {row.rooms.map((room: string) => (
+        {row?.rooms?.map((room: string) => (
           <span className={styles.room}>{room}</span>
         ))}
       </div>

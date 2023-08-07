@@ -3,21 +3,24 @@ import styles from "./styles.module.scss";
 
 const Field = ({
   title,
+  name,
+  value,
+  onChange,
   placeholder,
 }: {
   title: string;
+  name?: string;
+  value?: string;
+  onChange?: (event: any) => void;
   placeholder: string;
 }) => {
-  const [value, changeValue] = useState("");
-  const onValueChange = (e: any) => {
-    changeValue(e.target.value);
-  };
   return (
     <div className={styles.field_container}>
       <div className={styles.title}>{title}</div>
       <input
+        name={name}
         value={value}
-        onChange={onValueChange}
+        onChange={onChange}
         placeholder={placeholder}
         className={styles.input}
       />
