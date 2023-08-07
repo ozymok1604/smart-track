@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import styles from "./styles.module.scss";
 import { openWardOptionsModal } from "../../store";
 import Close from "../../assets/Close.svg";
+import styles from "./styles.module.scss";
 
 const OptionsModal = () => {
   const dispatch = useDispatch();

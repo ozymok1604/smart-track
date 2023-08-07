@@ -1,8 +1,11 @@
 import Arrow from "../../assets/Arrow.svg";
-
 import styles from "./styles.module.scss";
 
-const HospitalWard = ({ handleCloseModal }: { handleCloseModal?: any }) => {
+const HospitalWard = ({
+  handleCloseModal,
+}: {
+  handleCloseModal?: () => void;
+}) => {
   return (
     <div onClick={handleCloseModal} className={styles.ward}>
       <div className={styles.header}>

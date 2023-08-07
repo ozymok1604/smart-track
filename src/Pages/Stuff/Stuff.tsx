@@ -1,18 +1,14 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SideBarMenu } from "../../layouts/SideBarMenu";
-
 import { changeTab, openAddStuffModal } from "../../store";
-import { useSelector } from "react-redux";
 import { Table } from "../../Components/Table";
-
-import styles from "./styles.module.scss";
 import { Button } from "../../Components/Button";
 import { AddStuffModal } from "../../layouts/AddStuffModal";
+import styles from "./styles.module.scss";
 
 const Stuff = () => {
   const tabs = ["Doctors", "Assistants", "Receptionists"];
   const activeTab = useSelector((state: SmartTrackState) => state.tab);
-  const newWorker = useSelector((state: SmartTrackState) => state.worker);
 
   const dispatch = useDispatch();
   const handleTabChange = (tab: string) => {
@@ -23,221 +19,19 @@ const Stuff = () => {
     (state: SmartTrackState) => state.isOpenAddStuffModal
   );
 
-  const workers = JSON.parse(localStorage.getItem("workers") || "[]");
+  const employees = JSON.parse(localStorage.getItem("employees") || "[]");
 
-  const doctors = workers.filter((worker: Doctor) => worker.type == "Doctors");
-
-  const assistants = workers.filter(
-    (worker: Doctor) => worker.type == "Assistants"
+  const doctors = employees.filter(
+    (employee: Doctor) => employee.type == "Doctors"
   );
 
-  const receptionists = workers.filter(
-    (worker: Doctor) => worker.type == "Receptionists"
+  const assistants = employees.filter(
+    (employee: Assistant) => employee.type == "Assistants"
   );
 
-  // const doctorRows = [
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  //   {
-  //     name: "Alex Sample",
-  //     email: "frontdesk@gmail.com",
-  //     phone: "0967970902",
-  //     allerts: [
-  //       "assistant",
-  //       "doctor",
-  //       "finances",
-  //       "patient",
-  //       "emergency",
-  //       "empty",
-  //     ],
-  //     rooms: ["1a", "1b", "3f"],
-  //   },
-  // ];
-
-  const receptionistRows = [
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-  ];
-
-  const assistantRows = [
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-    {
-      name: "Alex Sample",
-      email: "frontdesk@gmail.com",
-      phone: "0967970902",
-    },
-  ];
+  const receptionists = employees.filter(
+    (employee: Receptionist) => employee.type == "Receptionists"
+  );
   const handleOpenAddStuffModal = () => {
     dispatch(openAddStuffModal(true));
   };
@@ -252,11 +46,10 @@ const Stuff = () => {
             {tabs.map((tab) => {
               return (
                 <div
-                  style={
-                    activeTab == tab
-                      ? { borderBottom: "1px solid #6ac7be", color: "#6ac7be" }
-                      : {}
-                  }
+                  style={{
+                    borderBottom:
+                      activeTab == tab ? "1px solid #6ac7be color:#6ac7be" : "",
+                  }}
                   onClick={() => handleTabChange(tab)}
                   className={styles.navigationItem}
                 >

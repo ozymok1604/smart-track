@@ -1,19 +1,17 @@
-import styles from "./styles.module.scss";
-
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-
 import { addNewStuff, openAddStuffModal } from "../../store";
-import Close from "../../assets/Close.svg";
-import Delete from "../../assets/AllertDelete.svg";
 import { Field } from "../../Components/Field";
 import { Button } from "../../Components/Button";
-import { useEffect, useState } from "react";
+import Close from "../../assets/Close.svg";
+import Delete from "../../assets/AllertDelete.svg";
+import styles from "./styles.module.scss";
 
 const AddStuffModal = ({ type }: { type?: string }) => {
   const dispatch = useDispatch();
 
   const [addedAllerts, setAddedAllerts] = useState<string[]>([]);
-  const [stuffData, setStuffData] = useState<Doctor>({
+  const [stuffData, setStuffData] = useState<Employee>({
     type: type,
     name: "",
     email: "",
@@ -35,13 +33,9 @@ const AddStuffModal = ({ type }: { type?: string }) => {
 
   const allerts = [
     { title: "Assistant", value: "assistant" },
-
     { title: "Doctor", value: "doctor" },
-
     { title: "Finances", value: "financial" },
-
     { title: "Patient", value: "patient" },
-
     { title: "Emergency", value: "emergency" },
     { title: "Empty", value: "empty" },
   ];
@@ -120,11 +114,11 @@ const AddStuffModal = ({ type }: { type?: string }) => {
                   className={styles.allert_container}
                 >
                   <div
-                    style={
-                      addedAllerts.includes(allert.value)
-                        ? { border: "4px solid" }
-                        : {}
-                    }
+                    style={{
+                      border: addedAllerts.includes(allert.value)
+                        ? "4px solid"
+                        : "",
+                    }}
                     className={styles[allert.value]}
                   >
                     {addedAllerts.includes(allert.value) && (
@@ -133,11 +127,11 @@ const AddStuffModal = ({ type }: { type?: string }) => {
                   </div>
 
                   <div
-                    style={
-                      addedAllerts.includes(allert.value)
-                        ? { fontWeight: "700" }
-                        : {}
-                    }
+                    style={{
+                      fontWeight: addedAllerts.includes(allert.value)
+                        ? "700"
+                        : "",
+                    }}
                     className={styles.allert_name}
                   >
                     {allert.title}

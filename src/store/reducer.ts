@@ -5,9 +5,9 @@ const initialState: SmartTrackState = {
   isOpenWardOptions: false,
   count: 0,
   isOpenAddStuffModal: false,
-  worker: {},
+  employee: {},
 };
-const workers = JSON.parse(localStorage.getItem("workers") || "[]");
+const employees = JSON.parse(localStorage.getItem("employees") || "[]");
 
 const reducer = (
   state: SmartTrackState = initialState,
@@ -35,13 +35,16 @@ const reducer = (
         isOpenAddStuffModal: action.isOpenAddStuffModal,
       };
     case actionTypes.ADD_NEW_STUFF:
-      const newWorkersList = action.worker.name
-        ? [...workers, action.worker]
+      const newEmployeesList = action.employee.name
+        ? [...employees, action.employee]
         : [];
-      window.localStorage.setItem("workers", JSON.stringify(newWorkersList));
+      window.localStorage.setItem(
+        "employees",
+        JSON.stringify(newEmployeesList)
+      );
       return {
         ...state,
-        worker: action.worker,
+        employee: action.employee,
       };
   }
   return state;

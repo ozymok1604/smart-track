@@ -1,13 +1,10 @@
-import { useSelector } from "react-redux";
-
+import { MenuItem } from "../../Components/MenuElement/MenuElement";
 import Allerts from "../../assets/Allerts.svg";
 import Dashboard from "../../assets/Dashboard.svg";
 import Sequence from "../../assets/Sequence.svg";
-import SignOut from "../../assets/SignOut.svg";
 import Stuff from "../../assets/Stuff.svg";
-import { MenuItem } from "../../Components/MenuElement/MenuElement";
-import styles from "./styles.module.scss";
 import { Button } from "../../Components/Button";
+import styles from "./styles.module.scss";
 
 const SideBarMenu = () => {
   const menuList = [

@@ -1,16 +1,14 @@
 import Edit from "../../assets/Edit.svg";
-
 import Delete from "../../assets/Delete.svg";
-
 import Assistant from "../../assets/Assistant.svg";
-
 import styles from "./styles.module.scss";
+
 const AssistantRow = ({
   row,
   index,
   receptionistRow,
 }: {
-  row: any;
+  row: AssistantRow;
   index: number;
   receptionistRow?: boolean;
 }) => {

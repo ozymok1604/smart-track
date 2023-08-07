@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
-import { Button } from "../Button";
-import styles from "./styles.module.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { Button } from "../Button";
 import { changeCount } from "../../store";
+import styles from "./styles.module.scss";
 
 const DoctorCard = () => {
   const count = useSelector((state: SmartTrackState) => state.count);

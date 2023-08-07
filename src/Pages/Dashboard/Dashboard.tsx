@@ -1,12 +1,7 @@
 import { useSelector } from "react-redux";
-import { Button } from "../../Components/Button";
-import { DoctorCard } from "../../Components/DoctorCard";
 import { DoctorLine } from "../../Components/DoctorLine";
-import { Field } from "../../Components/Field";
 import { OptionsModal } from "../../layouts/OptionsModal";
-
 import { SideBarMenu } from "../../layouts/SideBarMenu";
-
 import styles from "./styles.module.scss";
 
 const Dashboard = () => {

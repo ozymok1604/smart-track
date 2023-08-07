@@ -1,11 +1,10 @@
-import styles from "./styles.module.scss";
-
+import { useState } from "react";
 import Add from "../../assets/PrimaryAdd.svg";
 import HoverAdd from "../../assets/SecondaryAdd.svg";
 import ActiveAdd from "../../assets/BorderedAdd.svg";
 import Out from "../../assets/SignOut.svg";
 import ActiveOut from "../../assets/ActiveSignOut.svg";
-import { useState } from "react";
+import styles from "./styles.module.scss";
 
 const Button = ({
   onClick,

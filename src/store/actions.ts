@@ -28,9 +28,9 @@ export const openAddStuffModal = (isOpenAddStuffModal: IsOpen) => {
   };
 };
 
-export const addNewStuff = (worker: Doctor) => {
+export const addNewStuff = (employee: Employee) => {
   return {
     type: actionTypes.ADD_NEW_STUFF,
-    worker,
+    employee,
   };
 };

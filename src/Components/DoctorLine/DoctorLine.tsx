@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { DoctorCard } from "../DoctorCard";
 import { HospitalWard } from "../HospitalWard";
-import styles from "./styles.module.scss";
 import { openWardOptionsModal } from "../../store";
+import styles from "./styles.module.scss";
 
 const DoctorLine = () => {
   const dispatch = useDispatch();

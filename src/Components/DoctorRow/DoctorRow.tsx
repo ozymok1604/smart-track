@@ -1,10 +1,8 @@
 import Edit from "../../assets/Edit.svg";
-
 import Delete from "../../assets/Delete.svg";
-
 import styles from "./styles.module.scss";
 
-const DoctorRow = ({ row, index }: { row: any; index: number }) => {
+const DoctorRow = ({ row, index }: { row: DoctorRow; index: number }) => {
   return (
     <div className={styles.row}>
       <div className={styles.index}>

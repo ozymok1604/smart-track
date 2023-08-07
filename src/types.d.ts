@@ -12,12 +12,32 @@ type DoctorRow = {
   rooms?: string[];
 };
 
+type Employee = {
+  type?: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  allerts?: any[];
+};
+
 type Doctor = {
   type?: string;
   name?: string;
   email?: string;
   phone?: string;
   allerts?: any[];
+};
+
+type Assistant = {
+  type?: string;
+  name?: string;
+  email?: string;
+};
+
+type Receptionist = {
+  type?: string;
+  name?: string;
+  email?: string;
 };
 
 type RowType = string;
@@ -44,7 +64,7 @@ type TrackAction = {
   count: Count;
   isOpenWardOptions: IsOpen;
   isOpenAddStuffModal: IsOpen;
-  worker: Doctor;
+  employee: Employee;
 };
 
 type SmartTrackState = {
@@ -52,7 +72,7 @@ type SmartTrackState = {
   isOpenWardOptions: IsOpen;
   count: Count;
   isOpenAddStuffModal: IsOpen;
-  worker: Doctor;
+  employee: Employee;
 };
 
 type DispatchType = (args: TrackAction) => TrackAction;
