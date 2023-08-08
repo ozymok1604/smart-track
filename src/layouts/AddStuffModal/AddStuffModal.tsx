@@ -1,22 +1,41 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addNewStuff, openAddStuffModal } from "../../store";
+import { useSelector } from "react-redux";
+import { addNewEmployee, editEmployee, openAddStuffModal } from "../../store";
 import { Field } from "../../Components/Field";
 import { Button } from "../../Components/Button";
 import Close from "../../assets/Close.svg";
 import Delete from "../../assets/AllertDelete.svg";
+import { getRandomNumber } from "../../utils/getRandomNumber";
 import styles from "./styles.module.scss";
 
-const AddStuffModal = ({ type }: { type?: string }) => {
+const AddStuffModal = ({
+  actionType,
+  employeeType,
+}: {
+  employeeType?: string;
+  actionType?: string;
+}) => {
+  const employeeData = useSelector(
+    (state: SmartTrackState) => state.employeeData
+  );
+  const stuffModalParameters = useSelector(
+    (state: SmartTrackState) => state.stuffModalParameters
+  );
   const dispatch = useDispatch();
 
-  const [addedAllerts, setAddedAllerts] = useState<string[]>([]);
+  const isEdit = stuffModalParameters.type == "edit";
+
+  const [addedAllerts, setAddedAllerts] = useState<any[]>(
+    (isEdit && employeeData.allerts) || []
+  );
   const [stuffData, setStuffData] = useState<Employee>({
-    type: type,
-    name: "",
-    email: "",
-    phone: "",
-    allerts: [],
+    id: isEdit ? employeeData?.id : getRandomNumber(1000),
+    type: employeeType || employeeData.type,
+    name: isEdit ? employeeData?.name : "",
+    email: isEdit ? employeeData?.email : "",
+    phone: isEdit ? employeeData?.phone : "",
+    allerts: isEdit ? employeeData?.allerts : [],
   });
 
   const handleStuffDataChange = (event: any) => {
@@ -28,7 +47,7 @@ const AddStuffModal = ({ type }: { type?: string }) => {
   };
 
   const handleCloseModal = () => {
-    dispatch(openAddStuffModal(false));
+    dispatch(openAddStuffModal({ type: "close", isOpen: false }));
   };
 
   const allerts = [
@@ -53,7 +72,9 @@ const AddStuffModal = ({ type }: { type?: string }) => {
   };
 
   const handleSaveForm = () => {
-    dispatch(addNewStuff(stuffData));
+    stuffModalParameters.type == "add"
+      ? dispatch(addNewEmployee(stuffData))
+      : dispatch(editEmployee(stuffData));
     handleCloseModal();
   };
 
@@ -70,11 +91,7 @@ const AddStuffModal = ({ type }: { type?: string }) => {
         onClick={(e) => e.stopPropagation()}
         className={styles.modal_content}
       >
-        <div className={styles.header}>
-          <div></div>
-          <div className={styles.header_title}>
-            Add new {type?.slice(0, -1)}
-          </div>
+        <div className={styles.close_container}>
           <img
             onClick={handleCloseModal}
             className={styles.close}
@@ -82,46 +99,51 @@ const AddStuffModal = ({ type }: { type?: string }) => {
             src={Close}
           />
         </div>
+        <div className={styles.header}>
+          <div className={styles.header_title}>
+            Add new {stuffData?.type?.slice(0, -1)}
+          </div>
+        </div>
         <Field
           name="name"
-          value={stuffData.name}
+          value={stuffData?.name}
           onChange={handleStuffDataChange}
           placeholder="Name"
           title="Name"
         />
         <Field
           name="email"
-          value={stuffData.email}
+          value={stuffData?.email}
           onChange={handleStuffDataChange}
           placeholder="example@mail.com"
           title="Email"
         />
         <Field
           name="phone"
-          value={stuffData.phone}
+          value={stuffData?.phone}
           onChange={handleStuffDataChange}
           placeholder="+380967970607"
           title="Phone number"
         />
 
-        {type == "Doctors" && (
+        {stuffData.type == "Doctors" && (
           <>
             <div className={styles.title}>Allerts</div>
             <div className={styles.allerts_line}>
               {allerts.map((allert) => (
                 <div
-                  onClick={() => handleAddAllert(allert.value)}
+                  onClick={() => handleAddAllert(allert?.value)}
                   className={styles.allert_container}
                 >
                   <div
                     style={{
-                      border: addedAllerts.includes(allert.value)
+                      border: addedAllerts.includes(allert?.value)
                         ? "4px solid"
                         : "",
                     }}
                     className={styles[allert.value]}
                   >
-                    {addedAllerts.includes(allert.value) && (
+                    {addedAllerts.includes(allert?.value) && (
                       <img src={Delete} alt="Delete" />
                     )}
                   </div>
@@ -134,7 +156,7 @@ const AddStuffModal = ({ type }: { type?: string }) => {
                     }}
                     className={styles.allert_name}
                   >
-                    {allert.title}
+                    {allert?.title}
                   </div>
                 </div>
               ))}

@@ -1,8 +1,26 @@
 import Edit from "../../assets/Edit.svg";
 import Delete from "../../assets/Delete.svg";
 import styles from "./styles.module.scss";
+import { useDispatch } from "react-redux";
+import {
+  deleteEmployee,
+  getEmployeeData,
+  openAddStuffModal,
+  openDeleteModal,
+} from "../../store";
 
 const DoctorRow = ({ row, index }: { row: DoctorRow; index: number }) => {
+  const dispatch = useDispatch();
+  const handleStartEditing = () => {
+    dispatch(getEmployeeData(row));
+    dispatch(openAddStuffModal({ type: "edit", isOpen: true }));
+  };
+
+  const handleStartDeleting = () => {
+    dispatch(openDeleteModal(true));
+    dispatch(getEmployeeData(row));
+  };
+
   return (
     <div className={styles.row}>
       <div className={styles.index}>
@@ -24,8 +42,18 @@ const DoctorRow = ({ row, index }: { row: DoctorRow; index: number }) => {
         ))}
       </div>
       <div className={styles.actions}>
-        <img className={styles.action} alt="Edit" src={Edit} />
-        <img className={styles.action} alt="Delete" src={Delete} />
+        <img
+          onClick={handleStartEditing}
+          className={styles.action}
+          alt="Edit"
+          src={Edit}
+        />
+        <img
+          onClick={handleStartDeleting}
+          className={styles.action}
+          alt="Delete"
+          src={Delete}
+        />
       </div>
     </div>
   );

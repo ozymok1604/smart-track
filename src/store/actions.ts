@@ -21,16 +21,44 @@ export const changeCount = (count: Count) => {
   };
 };
 
-export const openAddStuffModal = (isOpenAddStuffModal: IsOpen) => {
+export const openAddStuffModal = (stuffModalParameters: StuffModal) => {
   return {
     type: actionTypes.OPEN_ADD_STUFF_MODAL,
-    isOpenAddStuffModal,
+    stuffModalParameters,
   };
 };
 
-export const addNewStuff = (employee: Employee) => {
+export const addNewEmployee = (employee: Employee) => {
   return {
-    type: actionTypes.ADD_NEW_STUFF,
+    type: actionTypes.ADD_NEW_EMPLOYEE,
     employee,
+  };
+};
+
+export const getEmployeeData = (employeeData: Employee) => {
+  return {
+    type: actionTypes.GET_EMPLOYEE_DATA,
+    employeeData,
+  };
+};
+
+export const editEmployee = (editedEmployee: Employee) => {
+  return {
+    type: actionTypes.EDIT_EMPLOYEE,
+    editedEmployee,
+  };
+};
+
+export const deleteEmployee = (employeeId?: number) => {
+  return {
+    type: actionTypes.DELETE_EMPLOYEE,
+    employeeId,
+  };
+};
+
+export const openDeleteModal = (isOpenDeleteModal: IsOpen) => {
+  return {
+    type: actionTypes.OPEN_DELETE_MODAL,
+    isOpenDeleteModal,
   };
 };

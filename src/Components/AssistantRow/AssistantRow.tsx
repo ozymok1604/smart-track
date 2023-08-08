@@ -2,6 +2,12 @@ import Edit from "../../assets/Edit.svg";
 import Delete from "../../assets/Delete.svg";
 import Assistant from "../../assets/Assistant.svg";
 import styles from "./styles.module.scss";
+import { useDispatch } from "react-redux";
+import {
+  getEmployeeData,
+  openAddStuffModal,
+  openDeleteModal,
+} from "../../store";
 
 const AssistantRow = ({
   row,
@@ -12,6 +18,16 @@ const AssistantRow = ({
   index: number;
   receptionistRow?: boolean;
 }) => {
+  const dispatch = useDispatch();
+
+  const handleStartEditing = () => {
+    dispatch(getEmployeeData(row));
+    dispatch(openAddStuffModal({ type: "edit", isOpen: true }));
+  };
+  const handleStartDeleting = () => {
+    dispatch(openDeleteModal(true));
+    dispatch(getEmployeeData(row));
+  };
   return (
     <div className={styles.row}>
       <div className={styles.index}>
@@ -25,8 +41,18 @@ const AssistantRow = ({
         {!receptionistRow && (
           <img className={styles.action} alt="Assistant" src={Assistant} />
         )}
-        <img className={styles.action} alt="Edit" src={Edit} />
-        <img className={styles.action} alt="Delete" src={Delete} />
+        <img
+          onClick={handleStartEditing}
+          className={styles.action}
+          alt="Edit"
+          src={Edit}
+        />
+        <img
+          onClick={handleStartDeleting}
+          className={styles.action}
+          alt="Delete"
+          src={Delete}
+        />
       </div>
     </div>
   );
