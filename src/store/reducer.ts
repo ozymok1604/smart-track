@@ -10,7 +10,11 @@ const initialState: SmartTrackState = {
   employeeData: {},
   editedEmployee: {},
   employeeId: 0,
-  isOpenDeleteModal: false,
+  deleteModalParameters: {},
+  roomModalParameters: {},
+  room: {},
+  roomId: "",
+  editedRoom: {},
 };
 
 const reducer = (
@@ -18,6 +22,8 @@ const reducer = (
   action: TrackAction
 ) => {
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
+  const rooms = JSON.parse(localStorage.getItem("rooms") || "[]");
+
   switch (action.type) {
     case actionTypes.CHANGE_TAB:
       return {
@@ -71,7 +77,7 @@ const reducer = (
     case actionTypes.OPEN_DELETE_MODAL:
       return {
         ...state,
-        isOpenDeleteModal: action.isOpenDeleteModal,
+        deleteModalParameters: action.deleteModalParameters,
       };
     case actionTypes.DELETE_EMPLOYEE:
       const newList = employees.filter(
@@ -82,6 +88,44 @@ const reducer = (
       return {
         ...state,
         employeeId: action.employeeId,
+      };
+    case actionTypes.OPEN_ADD_ROOM_MODAL:
+      return {
+        ...state,
+        roomModalParameters: action.roomModalParameters,
+      };
+    case actionTypes.ADD_ROOM:
+      const newRoomsList = action.room.name ? [...rooms, action.room] : [];
+      const filteredRoomsList = getFilteredList(newRoomsList);
+      window.localStorage.setItem("rooms", JSON.stringify(filteredRoomsList));
+      console.log(rooms);
+      return {
+        ...state,
+        room: action.room,
+      };
+    case actionTypes.DELETE_ROOM:
+      const newDeletedRoomsList = rooms.filter(
+        (room: Room) => room.id != action.roomId
+      );
+      window.localStorage.setItem("rooms", JSON.stringify(newDeletedRoomsList));
+
+      return {
+        ...state,
+        roomId: action.roomId,
+      };
+
+    case actionTypes.EDIT_ROOM:
+      const indexEditedRoom = rooms.findIndex((room: Room) => {
+        return room.id == state.editedRoom.id;
+      });
+      console.log(action);
+
+      rooms[indexEditedRoom] = action.editedRoom;
+      window.localStorage.setItem("rooms", JSON.stringify(rooms));
+
+      return {
+        ...state,
+        editedRoom: action.editedRoom,
       };
   }
   return state;

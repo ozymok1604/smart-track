@@ -1,0 +1,63 @@
+@import "src/variables";
+
+.page_content {
+  width: 82vw;
+  display: flex;
+  flex-direction: column;
+  background-color: $light-grey;
+  padding: 53px;
+  margin-left: 11vw;
+  align-items: center;
+  gap: 50px;
+}
+
+.title {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  letter-spacing: 0em;
+}
+
+.select_container {
+  display: flex;
+
+  gap: 10px;
+  flex-direction: column;
+}
+
+.header {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.rooms_box {
+  display: flex;
+  width: 100%;
+  z-index: 0;
+  height: 140px;
+  border: 1px dashed $turquoise;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background-color: $white;
+  border-radius: 3px;
+  padding-left: 10px;
+}
+
+.text {
+  color: $turquoise;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.rooms_table {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}

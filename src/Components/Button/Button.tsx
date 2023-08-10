@@ -39,6 +39,21 @@ const Button = ({
           />
           <div className={styles.add}>{title}</div>
         </div>
+      ) : type == "addRoom" ? (
+        <div
+          onMouseOver={() => setHover(true)}
+          onMouseOut={() => setHover(false)}
+          onMouseDown={() => setActive(true)}
+          onMouseUp={() => setActive(false)}
+          className={styles.add_room_container}
+        >
+          <img
+            className={styles.svg}
+            alt="add"
+            src={isActive ? ActiveAdd : isHover ? HoverAdd : Add}
+          />
+          <div className={styles.add_room}>{title}</div>
+        </div>
       ) : type == "secondary" ? (
         <button className={styles.secondary}>{title}</button>
       ) : type == "reset" ? (

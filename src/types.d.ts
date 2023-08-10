@@ -67,6 +67,24 @@ type Option = {
   value: string;
 };
 
+type Room = {
+  id?: any;
+  name?: string;
+  doctor?: string;
+};
+
+type DeleteModalParameters = {
+  roomId?: string;
+  employeeId?: string;
+  isOpenDeleteModal?: IsOpen;
+};
+
+type RoomModalParameters = {
+  room?: Room;
+  type?: string;
+  isOpenRoomModal?: IsOpen;
+};
+
 type TrackAction = {
   type: string;
   tab: Tab;
@@ -77,7 +95,11 @@ type TrackAction = {
   employeeData: Employee;
   editedEmployee: Employee;
   employeeId: number;
-  isOpenDeleteModal: IsOpen;
+  deleteModalParameters: DeleteModalParameters;
+  roomModalParameters: RoomModalParameters;
+  room: Room;
+  editedRoom: Room;
+  roomId: string;
 };
 
 type SmartTrackState = {
@@ -89,7 +111,16 @@ type SmartTrackState = {
   employeeData: Employee;
   editedEmployee: Employee;
   employeeId: number;
-  isOpenDeleteModal: IsOpen;
+  editedRoom: Room;
+  roomModalParameters: RoomModalParameters;
+  deleteModalParameters: DeleteModalParameters;
+  room: any;
+  roomId: string;
+};
+
+type SelectOption = {
+  value: string;
+  title: string;
 };
 
 type DispatchType = (args: TrackAction) => TrackAction;

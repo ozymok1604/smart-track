@@ -17,7 +17,7 @@ const DoctorRow = ({ row, index }: { row: DoctorRow; index: number }) => {
   };
 
   const handleStartDeleting = () => {
-    dispatch(openDeleteModal(true));
+    dispatch(openDeleteModal({ isOpenDeleteModal: true }));
     dispatch(getEmployeeData(row));
   };
 

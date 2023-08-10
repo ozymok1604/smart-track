@@ -5,7 +5,7 @@ import { Table } from "../../Components/Table";
 import { Button } from "../../Components/Button";
 import { AddStuffModal } from "../../layouts/AddStuffModal";
 import styles from "./styles.module.scss";
-import { DeleteStuffModal } from "../../layouts/DeleteStuffModal";
+import { DeleteModal } from "../../layouts/DeleteModal";
 
 const Stuff = () => {
   const tabs = ["Doctors", "Assistants", "Receptionists"];
@@ -25,7 +25,7 @@ const Stuff = () => {
   );
 
   const isOpenDeleteModal = useSelector(
-    (state: SmartTrackState) => state.isOpenDeleteModal
+    (state: SmartTrackState) => state.deleteModalParameters.isOpenDeleteModal
   );
 
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
@@ -50,12 +50,12 @@ const Stuff = () => {
   return (
     <div className={styles.page}>
       <SideBarMenu />
-
+      {isOpenDeleteModal && <DeleteModal type="stuff" />}
       <div className={styles.page_content}>
         {stuffModalParameters.isOpen && (
           <AddStuffModal employeeType={activeTab} />
         )}
-        {isOpenDeleteModal && <DeleteStuffModal />}
+
         <div className={styles.header}>
           <div className={styles.navigation}>
             {tabs.map((tab) => {

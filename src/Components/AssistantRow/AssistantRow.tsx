@@ -25,7 +25,7 @@ const AssistantRow = ({
     dispatch(openAddStuffModal({ type: "edit", isOpen: true }));
   };
   const handleStartDeleting = () => {
-    dispatch(openDeleteModal(true));
+    dispatch(openDeleteModal({ isOpenDeleteModal: true }));
     dispatch(getEmployeeData(row));
   };
   return (

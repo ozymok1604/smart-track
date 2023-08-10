@@ -1,0 +1,42 @@
+@import "src/variables";
+.value_container {
+  display: flex;
+  flex-direction: row;
+  width: 280px;
+  height: 45px;
+  border: 1px solid $bright-viloet;
+  border-radius: 20px 20px 20px 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 10px;
+}
+.value_container:hover {
+  cursor: pointer;
+}
+
+.value {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.options_box {
+  width: 310px;
+  z-index: 2;
+  position: absolute;
+  background-color: $light-grey;
+  border: 1px solid $bright-viloet;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0px 4px 10px 0px rgba(32, 43, 93, 0.08);
+}
+
+.option {
+  padding: 10px;
+  padding-left: 20px;
+}
+.option:hover {
+  cursor: pointer;
+  border-radius: 10px 10px 10px 10px;
+  background-color: $white;
+}

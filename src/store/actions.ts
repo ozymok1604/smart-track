@@ -56,9 +56,39 @@ export const deleteEmployee = (employeeId?: number) => {
   };
 };
 
-export const openDeleteModal = (isOpenDeleteModal: IsOpen) => {
+export const openDeleteModal = (
+  deleteModalParameters: DeleteModalParameters
+) => {
   return {
     type: actionTypes.OPEN_DELETE_MODAL,
-    isOpenDeleteModal,
+    deleteModalParameters,
+  };
+};
+
+export const openRoomModal = (roomModalParameters: RoomModalParameters) => {
+  return {
+    type: actionTypes.OPEN_ADD_ROOM_MODAL,
+    roomModalParameters,
+  };
+};
+
+export const addRoom = (room: Room) => {
+  return {
+    type: actionTypes.ADD_ROOM,
+    room,
+  };
+};
+
+export const deleteRoom = (roomId?: string) => {
+  return {
+    type: actionTypes.DELETE_ROOM,
+    roomId,
+  };
+};
+
+export const editRoom = (editedRoom?: Room) => {
+  return {
+    type: actionTypes.EDIT_ROOM,
+    editedRoom,
   };
 };

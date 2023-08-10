@@ -1,4 +1,4 @@
-import Arrow from "../../assets/Arrow.svg";
+import ArrowDown from "../../assets/ArrowDown.svg";
 import styles from "./styles.module.scss";
 
 const HospitalWard = ({
@@ -20,7 +20,7 @@ const HospitalWard = ({
       <div className={styles.option_container}>
         <div className={styles.last_option}>Assistant Required</div>
 
-        <img className={styles.arrow} alt="arrow" src={Arrow} />
+        <img className={styles.arrow} alt="arrow" src={ArrowDown} />
       </div>
     </div>
   );

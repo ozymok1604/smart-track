@@ -7,3 +7,7 @@ export const EDIT_EMPLOYEE = "EDIT_EMPLOYEE";
 export const GET_EMPLOYEE_DATA = "GET_EMPLOYEE_DATA";
 export const DELETE_EMPLOYEE = "DELETE_EMPLOYEE";
 export const OPEN_DELETE_MODAL = "OPEN_DELETE_MODAL";
+export const OPEN_ADD_ROOM_MODAL = "OPEN_ADD_ROOM_MODAL";
+export const ADD_ROOM = "ADD_ROOM";
+export const DELETE_ROOM = "DELETE_ROOM";
+export const EDIT_ROOM = "EDIT_ROOM";

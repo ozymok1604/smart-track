@@ -1,23 +1,29 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEmployee, openDeleteModal } from "../../store";
+import { deleteEmployee, deleteRoom, openDeleteModal } from "../../store";
 import { Button } from "../../Components/Button";
 import Close from "../../assets/Close.svg";
 import styles from "./styles.module.scss";
 
-const DeleteStuffModal = () => {
+const DeleteModal = ({ type }: { type?: string }) => {
   const dispatch = useDispatch();
   const tab = useSelector((state: SmartTrackState) => state.tab);
   const employeeData = useSelector(
     (state: SmartTrackState) => state.employeeData
   );
+  const roomId = useSelector(
+    (state: SmartTrackState) => state.deleteModalParameters.roomId
+  );
 
   const handleCloseModal = () => {
-    dispatch(openDeleteModal(false));
+    dispatch(openDeleteModal({ isOpenDeleteModal: false }));
   };
 
   const handleDeleteEmployee = () => {
-    dispatch(deleteEmployee(employeeData?.id));
-    dispatch(openDeleteModal(false));
+    type == "stuff"
+      ? dispatch(deleteEmployee(employeeData?.id))
+      : dispatch(deleteRoom(roomId));
+
+    dispatch(openDeleteModal({ isOpenDeleteModal: false }));
   };
   return (
     <div onClick={handleCloseModal} className={styles.modal}>
@@ -34,11 +40,14 @@ const DeleteStuffModal = () => {
           />
         </div>
         <div className={styles.header}>
-          <div className={styles.header_title}>Delete {tab?.slice(0, -1)}</div>
+          <div className={styles.header_title}>
+            Delete {type == "stuff" ? tab?.slice(0, -1) : "room"}
+          </div>
         </div>
 
         <div className={styles.title}>
-          Are you sure you want to delete this {tab?.slice(0, -1)}?
+          Are you sure you want to delete this
+          {type == "stuff" ? tab?.slice(0, -1) : "room"}?
         </div>
 
         <div className={styles.footer}>
@@ -54,4 +63,4 @@ const DeleteStuffModal = () => {
   );
 };
 
-export { DeleteStuffModal };
+export { DeleteModal };
