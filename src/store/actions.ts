@@ -92,3 +92,17 @@ export const editRoom = (editedRoom?: Room) => {
     editedRoom,
   };
 };
+
+export const selectDoctor = (selectedDoctor?: Doctor) => {
+  return {
+    type: actionTypes.SELECT_DOCTOR,
+    selectedDoctor,
+  };
+};
+
+export const renameRooms = (selectedRooms?: Room[]) => {
+  return {
+    type: actionTypes.RENAME_ROOMS,
+    selectedRooms,
+  };
+};

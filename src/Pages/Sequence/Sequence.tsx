@@ -4,22 +4,24 @@ import { Select } from "../../Components/Select";
 import { SequenceRoom } from "../../Components/SequenceRoom";
 import { SideBarMenu } from "../../layouts/SideBarMenu";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-
 import { useSelector } from "react-redux";
 import { RoomModal } from "../../layouts/RoomModal";
 import { useDispatch } from "react-redux";
-import { openRoomModal } from "../../store";
-
+import { editEmployee, openRoomModal, renameRooms } from "../../store";
 import { DeleteModal } from "../../layouts/DeleteModal";
-
+import { getRandomNumber } from "../../utils/getRandomNumber";
+import { getFilteredListNames } from "../../utils/getFilteredListNames";
 import styles from "./styles.module.scss";
 
 const Sequence = () => {
   const dispatch = useDispatch();
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
   const room = useSelector((state: SmartTrackState) => state.room);
-  const editedRoom = useSelector((state: SmartTrackState) => state.editedRoom);
+
   const deletedRoom = useSelector((state: SmartTrackState) => state.roomId);
+  const selectedDoctor = useSelector(
+    (state: SmartTrackState) => state.selectedDoctor
+  );
   const roomModalType = useSelector(
     (state: SmartTrackState) => state.roomModalParameters.type
   );
@@ -31,7 +33,7 @@ const Sequence = () => {
       rooms: rooms,
     },
     doctorRooms: {
-      rooms: [],
+      rooms: selectedDoctor?.rooms || [],
     },
   };
 
@@ -46,20 +48,16 @@ const Sequence = () => {
     (state: SmartTrackState) => state.deleteModalParameters.isOpenDeleteModal
   );
 
-  const options = doctors?.map((doctor: Doctor) => ({
-    title: doctor.name,
-    value: doctor.name,
-  }));
-
   const handleOpenAddRoomModal = () => {
     dispatch(openRoomModal({ isOpenRoomModal: true }));
   };
 
   const [columns, setColumns] = useState(roomColumns);
+  const [newDoctorRooms, setNewDoctorRooms] = useState<any[]>([]);
 
   useEffect(() => {
     setColumns(roomColumns);
-  }, [room, deletedRoom, editedRoom]);
+  }, [room, deletedRoom, selectedDoctor]);
 
   const onDragEnd = ({
     result,
@@ -72,7 +70,6 @@ const Sequence = () => {
   }) => {
     if (!result.destination) return;
     const { source, destination } = result;
-
     if (source.droppableId !== destination.droppableId) {
       const sourceColumn = columns[source.droppableId];
       const destColumn = columns[destination.droppableId];
@@ -88,7 +85,7 @@ const Sequence = () => {
         },
         [destination.droppableId]: {
           ...destColumn,
-          rooms: destItems,
+          rooms: getFilteredListNames(destItems),
         },
       });
     } else {
@@ -105,11 +102,76 @@ const Sequence = () => {
       });
     }
   };
+  useEffect(() => {
+    setNewDoctorRooms(columns.doctorRooms.rooms);
+  }, [columns]);
+  const hasRooms = columns["doctorRooms"].rooms?.[0] ? true : false;
 
-  const hasRooms = columns["doctorRooms"].rooms[0] ? true : false;
+  const handleSaveDoctorRooms = () => {
+    doctors.map((doctor: any) => {
+      if (doctor.id != selectedDoctor?.id) {
+        const otherDoctorRooms: any[] = doctor?.rooms;
+        const doctorRooms: any[] = [];
+        otherDoctorRooms?.map((room: any) => {
+          const notSame = !newDoctorRooms.some(
+            (newRoom: any) => newRoom.name == room.name
+          );
+          notSame && doctorRooms.push(room);
+        });
+        const filteredDoctorRooms = getFilteredListNames(doctorRooms);
+        dispatch(editEmployee({ ...doctor, rooms: filteredDoctorRooms }));
+      }
+    });
+
+    dispatch(
+      editEmployee({
+        ...selectedDoctor,
+        rooms: newDoctorRooms?.map((item: any) => ({
+          id: getRandomNumber(1000).toString(),
+          name: item?.name,
+          doctor: selectedDoctor?.name,
+        })),
+      })
+    );
+
+    dispatch(
+      renameRooms(
+        newDoctorRooms?.map((item: any) => ({
+          id: item.id,
+          name: item?.name,
+          doctor: selectedDoctor?.name,
+        }))
+      )
+    );
+    const refreshedEmployees = JSON.parse(
+      localStorage.getItem("employees") || "[]"
+    );
+    const refreshedRooms = JSON.parse(localStorage.getItem("rooms") || "[]");
+    const refreshedDoctors = refreshedEmployees.filter(
+      (employee: Doctor) => employee.type == "Doctors"
+    );
+    const allSettedRooms = refreshedDoctors?.map((doctor: any) => doctor.rooms);
+    const mergedAllSettedRooms = allSettedRooms.flat(1);
+    const roomsToRename: any[] = [];
+    refreshedRooms.map((room: any) => {
+      const notExist = mergedAllSettedRooms.some(
+        (settledRoom: any) => settledRoom.name == room.name
+      );
+      !notExist && roomsToRename.push(room);
+    });
+    dispatch(
+      renameRooms(
+        roomsToRename?.map((item: any) => ({
+          id: item.id,
+          name: item?.name,
+          doctor: "",
+        }))
+      )
+    );
+  };
 
   return (
-    <>
+    <div className={styles.page}>
       <DragDropContext
         onDragEnd={(result) => onDragEnd({ result, columns, setColumns })}
       >
@@ -121,9 +183,13 @@ const Sequence = () => {
           <div className={styles.header}>
             <div className={styles.select_container}>
               <div className={styles.title}>Choose a Doctor</div>
-              <Select options={options} />
+              <Select doctors={doctors} />
             </div>
-            <Button title="Save" type="primary" />
+            <Button
+              onClick={handleSaveDoctorRooms}
+              title="Save"
+              type="primary"
+            />
           </div>
 
           <Droppable key={"doctorRooms"} droppableId={"doctorRooms"}>
@@ -179,7 +245,7 @@ const Sequence = () => {
           </div>
         </div>
       </DragDropContext>
-    </>
+    </div>
   );
 };
 

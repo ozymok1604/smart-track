@@ -1,5 +1,10 @@
 @import "src/variables";
 
+.page {
+  display: flex;
+  height: 100vh;
+  background-color: $light-grey;
+}
 .page_content {
   width: 82vw;
   display: flex;

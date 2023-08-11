@@ -15,6 +15,8 @@ const initialState: SmartTrackState = {
   room: {},
   roomId: "",
   editedRoom: {},
+  selectedDoctor: {},
+  selectedRooms: [],
 };
 
 const reducer = (
@@ -62,8 +64,12 @@ const reducer = (
         employeeData: action.employeeData,
       };
     case actionTypes.EDIT_EMPLOYEE:
+      console.log(action);
       const indexEditedEmployee = employees.findIndex((employee: Employee) => {
-        return employee.id == state.employeeData.id;
+        return (
+          employee.id == state.employeeData.id ||
+          employee.id == action.editedEmployee.id
+        );
       });
 
       employees[indexEditedEmployee] = action.editedEmployee;
@@ -118,14 +124,35 @@ const reducer = (
       const indexEditedRoom = rooms.findIndex((room: Room) => {
         return room.id == state.editedRoom.id;
       });
-      console.log(action);
 
       rooms[indexEditedRoom] = action.editedRoom;
+
       window.localStorage.setItem("rooms", JSON.stringify(rooms));
 
       return {
         ...state,
         editedRoom: action.editedRoom,
+      };
+    case actionTypes.SELECT_DOCTOR:
+      return {
+        ...state,
+        selectedDoctor: action.selectedDoctor,
+      };
+
+    case actionTypes.RENAME_ROOMS:
+      rooms?.map((room: Room) => {
+        action.selectedRooms?.map((selectedRoom: Room) => {
+          if (selectedRoom.id == room.id) {
+            const index = rooms.indexOf(room);
+            rooms[index] = selectedRoom;
+          }
+        });
+      });
+      window.localStorage.setItem("rooms", JSON.stringify(rooms));
+
+      return {
+        ...state,
+        selectedRooms: action.selectedRooms,
       };
   }
   return state;

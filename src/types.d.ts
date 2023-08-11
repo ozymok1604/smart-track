@@ -10,7 +10,7 @@ type DoctorRow = {
   email?: string;
   phone?: string;
   allerts?: string[];
-  rooms?: string[];
+  rooms?: Room[];
 };
 
 type Employee = {
@@ -20,7 +20,7 @@ type Employee = {
   email?: string;
   phone?: string;
   allerts?: any[];
-  rooms?: string[];
+  rooms?: Room[];
 };
 
 type Doctor = {
@@ -99,7 +99,9 @@ type TrackAction = {
   roomModalParameters: RoomModalParameters;
   room: Room;
   editedRoom: Room;
+  selectedDoctor?: Doctor;
   roomId: string;
+  selectedRooms?: Room[];
 };
 
 type SmartTrackState = {
@@ -114,6 +116,8 @@ type SmartTrackState = {
   editedRoom: Room;
   roomModalParameters: RoomModalParameters;
   deleteModalParameters: DeleteModalParameters;
+  selectedDoctor?: Doctor;
+  selectedRooms?: Room[];
   room: any;
   roomId: string;
 };

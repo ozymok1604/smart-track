@@ -2,23 +2,33 @@ import { useState } from "react";
 import ArrowDown from "../../assets/ArrowDown.svg";
 import ArrowUp from "../../assets/ArrowUp.svg";
 import styles from "./styles.module.scss";
+import { selectDoctor } from "../../store";
+import { useDispatch } from "react-redux";
 
-const Select = ({ options }: { options: SelectOption[] }) => {
-  const [value, setValue] = useState<string>(options[1].value);
+const Select = ({ doctors }: { doctors: Doctor[] }) => {
+  const [value, setValue] = useState<any>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
 
   const handleOpenOptions = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleChangeValue = (value: string) => {
-    setValue(value);
+  const handleChangeValue = (option: Doctor) => {
+    setValue(option.name);
+    dispatch(selectDoctor(option));
+    console.log(option);
     setIsOpen(!isOpen);
   };
   return (
     <div className={styles.select}>
       <div onClick={handleOpenOptions} className={styles.value_container}>
-        <div className={styles.value}>{value}</div>
+        {value ? (
+          <div className={styles.value}>{value}</div>
+        ) : (
+          <div className={styles.placeholder}>Select</div>
+        )}
         <img
           className={styles.arrow}
           src={isOpen ? ArrowUp : ArrowDown}
@@ -27,12 +37,12 @@ const Select = ({ options }: { options: SelectOption[] }) => {
       </div>
       {isOpen && (
         <div className={styles.options_box}>
-          {options.map((option) => (
+          {doctors?.map((option: any) => (
             <div
-              onClick={() => handleChangeValue(option.value)}
+              onClick={() => handleChangeValue(option)}
               className={styles.option}
             >
-              {option.title}
+              {option?.name}
             </div>
           ))}
         </div>

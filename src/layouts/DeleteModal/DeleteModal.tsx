@@ -47,7 +47,7 @@ const DeleteModal = ({ type }: { type?: string }) => {
 
         <div className={styles.title}>
           Are you sure you want to delete this
-          {type == "stuff" ? tab?.slice(0, -1) : "room"}?
+          {type == "stuff" ? tab?.slice(0, -1) : " room"}?
         </div>
 
         <div className={styles.footer}>

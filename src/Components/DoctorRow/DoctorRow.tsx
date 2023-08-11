@@ -37,8 +37,8 @@ const DoctorRow = ({ row, index }: { row: DoctorRow; index: number }) => {
       </div>
       <div>
         <span>Rooms </span>
-        {row?.rooms?.map((room: string) => (
-          <span className={styles.room}>{room}</span>
+        {row?.rooms?.map((room: Room) => (
+          <span className={styles.room}>{room?.name}</span>
         ))}
       </div>
       <div className={styles.actions}>

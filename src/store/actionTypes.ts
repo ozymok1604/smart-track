@@ -11,3 +11,5 @@ export const OPEN_ADD_ROOM_MODAL = "OPEN_ADD_ROOM_MODAL";
 export const ADD_ROOM = "ADD_ROOM";
 export const DELETE_ROOM = "DELETE_ROOM";
 export const EDIT_ROOM = "EDIT_ROOM";
+export const SELECT_DOCTOR = "SELECT_DOCTOR";
+export const RENAME_ROOMS = "RENAME_ROOMS";
