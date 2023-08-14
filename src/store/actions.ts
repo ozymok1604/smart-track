@@ -106,3 +106,47 @@ export const renameRooms = (selectedRooms?: Room[]) => {
     selectedRooms,
   };
 };
+
+export const startShowingAllert = (isShowingAllert?: boolean) => {
+  return {
+    type: actionTypes.START_SHOWING_ALLERT,
+    isShowingAllert,
+  };
+};
+
+export const stopShowingAllert = (isShowingAllert?: boolean) => {
+  return {
+    type: actionTypes.STOP_SHOWING_ALLERT,
+    isShowingAllert,
+  };
+};
+
+export const openAllertModal = (
+  allertModalParameters?: AllertModalParameters
+) => {
+  return {
+    type: actionTypes.OPEN_ALLERT_MODAL,
+    allertModalParameters,
+  };
+};
+
+export const getAllertData = (allertData?: AllertData) => {
+  return {
+    type: actionTypes.GET_ALLERT_DATA,
+    allertData,
+  };
+};
+
+export const addAllert = (allert?: AllertData) => {
+  return {
+    type: actionTypes.ADD_ALLERT,
+    allert,
+  };
+};
+
+export const editAllert = (editedAllert?: AllertData) => {
+  return {
+    type: actionTypes.EDIT_ALLERT,
+    editedAllert,
+  };
+};

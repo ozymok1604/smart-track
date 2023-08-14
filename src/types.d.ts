@@ -4,6 +4,17 @@ type IsOpen = boolean;
 
 type Count = number;
 
+type AllertModalParameters = {
+  isOpen?: IsOpen;
+  type?: string;
+};
+
+type AllertData = {
+  id?: string;
+  title?: string;
+  style?: string;
+};
+
 type DoctorRow = {
   id: number;
   name?: string;
@@ -101,7 +112,12 @@ type TrackAction = {
   editedRoom: Room;
   selectedDoctor?: Doctor;
   roomId: string;
+  isShowingAllert?: boolean;
+  allertData?: AllertData;
   selectedRooms?: Room[];
+  allertModalParameters?: AllertModalParameters;
+  allert?: AllertData;
+  editedAllert?: AllertData;
 };
 
 type SmartTrackState = {
@@ -118,7 +134,12 @@ type SmartTrackState = {
   deleteModalParameters: DeleteModalParameters;
   selectedDoctor?: Doctor;
   selectedRooms?: Room[];
+  isShowingAllert?: boolean;
+  allertModalParameters?: AllertModalParameters;
   room: any;
+  editedAllert?: AllertData;
+  allertData?: AllertData;
+  allert?: AllertData;
   roomId: string;
 };
 

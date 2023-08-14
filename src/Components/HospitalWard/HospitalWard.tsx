@@ -2,15 +2,17 @@ import ArrowDown from "../../assets/ArrowDown.svg";
 import styles from "./styles.module.scss";
 
 const HospitalWard = ({
-  handleCloseModal,
+  room,
+  onClick,
 }: {
-  handleCloseModal?: () => void;
+  onClick?: () => void;
+  room: Room;
 }) => {
   return (
-    <div onClick={handleCloseModal} className={styles.ward}>
+    <div onClick={onClick} className={styles.ward}>
       <div className={styles.header}>
         <div className={styles.ward_number}>
-          <div className={styles.text}>2b</div>
+          <div className={styles.text}>{room.name}</div>
         </div>
         <div className={styles.time}>10:25</div>
       </div>

@@ -5,11 +5,11 @@ import { Button } from "../Button";
 import { changeCount } from "../../store";
 import styles from "./styles.module.scss";
 
-const DoctorCard = () => {
+const DoctorCard = ({ doctor }: { doctor?: Doctor }) => {
   const count = useSelector((state: SmartTrackState) => state.count);
   const dispatch = useDispatch();
   const [countNumber, changeCountNumber] = useState(count);
-  const handleAddcountNumber = () => {
+  const handleAddCountNumber = () => {
     changeCountNumber(countNumber + 1);
     dispatch(changeCount(countNumber));
   };
@@ -17,16 +17,19 @@ const DoctorCard = () => {
     changeCountNumber(countNumber - 1);
     dispatch(changeCount(countNumber));
   };
+
+  const doctorName = doctor?.name?.split(" ");
+
   return (
     <div className={styles.flex_container}>
       <div className={styles.right_container}>
         <Button type="reset" title="Reset" />
       </div>
       <div className={styles.left_container}>
-        <div className={styles.doctor_name}>Benedict</div>
+        <div className={styles.doctor_name}>{doctorName?.[0]}</div>
       </div>
       <div className={styles.left_container}>
-        <div className={styles.doctor_name}>Cumberbatch</div>
+        <div className={styles.doctor_name}>{doctorName?.[1]}</div>
       </div>
       <div className={styles.left_container}>
         <div className={styles.doctor_profession}>Therapist</div>
@@ -37,7 +40,7 @@ const DoctorCard = () => {
           -
         </div>
         <div className={styles.count}>{countNumber}</div>
-        <div onClick={handleAddcountNumber} className={styles.change_count}>
+        <div onClick={handleAddCountNumber} className={styles.change_count}>
           +
         </div>
         <div>in line</div>

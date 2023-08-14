@@ -5,10 +5,10 @@ import { Draggable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
 import { openDeleteModal, openRoomModal } from "../../store";
 
-const SequenceRoom = ({ room, index }: { room?: any; index?: any }) => {
+const SequenceRoom = ({ room, index }: { room?: Room; index?: any }) => {
   const dispatch = useDispatch();
   const handleOpenDeleteModal = () => {
-    dispatch(openDeleteModal({ isOpenDeleteModal: true, roomId: room.id }));
+    dispatch(openDeleteModal({ isOpenDeleteModal: true, roomId: room?.id }));
   };
   const handleOpenEditRoomModal = () => {
     dispatch(

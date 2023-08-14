@@ -7,25 +7,33 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import { useSelector } from "react-redux";
 import { RoomModal } from "../../layouts/RoomModal";
 import { useDispatch } from "react-redux";
-import { editEmployee, openRoomModal, renameRooms } from "../../store";
+import {
+  editEmployee,
+  openRoomModal,
+  renameRooms,
+  startShowingAllert,
+  stopShowingAllert,
+} from "../../store";
 import { DeleteModal } from "../../layouts/DeleteModal";
 import { getRandomNumber } from "../../utils/getRandomNumber";
 import { getFilteredListNames } from "../../utils/getFilteredListNames";
 import styles from "./styles.module.scss";
+import { Message } from "../../layouts/Message";
 
 const Sequence = () => {
   const dispatch = useDispatch();
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
   const room = useSelector((state: SmartTrackState) => state.room);
-
   const deletedRoom = useSelector((state: SmartTrackState) => state.roomId);
   const selectedDoctor = useSelector(
     (state: SmartTrackState) => state.selectedDoctor
   );
+  const isShowingAllert = useSelector(
+    (state: SmartTrackState) => state.isShowingAllert
+  );
   const roomModalType = useSelector(
     (state: SmartTrackState) => state.roomModalParameters.type
   );
-
   const rooms = JSON.parse(localStorage.getItem("rooms") || "[]");
 
   const roomColumns = {
@@ -52,8 +60,12 @@ const Sequence = () => {
     dispatch(openRoomModal({ isOpenRoomModal: true }));
   };
 
+  const handleStopShowingAllert = () => {
+    dispatch(stopShowingAllert(false));
+  };
+
   const [columns, setColumns] = useState(roomColumns);
-  const [newDoctorRooms, setNewDoctorRooms] = useState<any[]>([]);
+  const [newDoctorRooms, setNewDoctorRooms] = useState<Room[]>([]);
 
   useEffect(() => {
     setColumns(roomColumns);
@@ -103,18 +115,18 @@ const Sequence = () => {
     }
   };
   useEffect(() => {
-    setNewDoctorRooms(columns.doctorRooms.rooms);
+    setNewDoctorRooms(columns.doctorRooms.rooms as Room[]);
   }, [columns]);
   const hasRooms = columns["doctorRooms"].rooms?.[0] ? true : false;
 
   const handleSaveDoctorRooms = () => {
-    doctors.map((doctor: any) => {
+    doctors.map((doctor: Doctor) => {
       if (doctor.id != selectedDoctor?.id) {
-        const otherDoctorRooms: any[] = doctor?.rooms;
-        const doctorRooms: any[] = [];
-        otherDoctorRooms?.map((room: any) => {
+        const otherDoctorRooms: Room[] = doctor?.rooms as Room[];
+        const doctorRooms = [] as Room[];
+        otherDoctorRooms?.map((room: Room) => {
           const notSame = !newDoctorRooms.some(
-            (newRoom: any) => newRoom.name == room.name
+            (newRoom: Room) => newRoom.name == room.name
           );
           notSame && doctorRooms.push(room);
         });
@@ -126,9 +138,9 @@ const Sequence = () => {
     dispatch(
       editEmployee({
         ...selectedDoctor,
-        rooms: newDoctorRooms?.map((item: any) => ({
+        rooms: newDoctorRooms?.map((room: Room) => ({
           id: getRandomNumber(1000).toString(),
-          name: item?.name,
+          name: room?.name,
           doctor: selectedDoctor?.name,
         })),
       })
@@ -136,9 +148,9 @@ const Sequence = () => {
 
     dispatch(
       renameRooms(
-        newDoctorRooms?.map((item: any) => ({
-          id: item.id,
-          name: item?.name,
+        newDoctorRooms?.map((room: Room) => ({
+          id: room.id,
+          name: room?.name,
           doctor: selectedDoctor?.name,
         }))
       )
@@ -150,24 +162,28 @@ const Sequence = () => {
     const refreshedDoctors = refreshedEmployees.filter(
       (employee: Doctor) => employee.type == "Doctors"
     );
-    const allSettedRooms = refreshedDoctors?.map((doctor: any) => doctor.rooms);
+    const allSettedRooms = refreshedDoctors?.map(
+      (doctor: Doctor) => doctor.rooms
+    );
     const mergedAllSettedRooms = allSettedRooms.flat(1);
-    const roomsToRename: any[] = [];
-    refreshedRooms.map((room: any) => {
+    const roomsToRename: Room[] = [];
+    refreshedRooms.map((room: Room) => {
       const notExist = mergedAllSettedRooms.some(
-        (settledRoom: any) => settledRoom.name == room.name
+        (settledRoom: Room) => settledRoom.name == room.name
       );
       !notExist && roomsToRename.push(room);
     });
     dispatch(
       renameRooms(
-        roomsToRename?.map((item: any) => ({
-          id: item.id,
-          name: item?.name,
+        roomsToRename?.map((room: Room) => ({
+          id: room.id,
+          name: room?.name,
           doctor: "",
         }))
       )
     );
+    dispatch(startShowingAllert(true));
+    setInterval(handleStopShowingAllert, 3000);
   };
 
   return (
@@ -177,6 +193,7 @@ const Sequence = () => {
       >
         {isOpenRoomModal && <RoomModal type={roomModalType} />}
         {isOpenDeleteModal && <DeleteModal type="room" />}
+        {isShowingAllert && <Message />}
         <SideBarMenu />
 
         <div className={styles.page_content}>
@@ -193,7 +210,7 @@ const Sequence = () => {
           </div>
 
           <Droppable key={"doctorRooms"} droppableId={"doctorRooms"}>
-            {(provided, snapshot) => (
+            {(provided) => (
               <>
                 <div
                   style={{
@@ -220,7 +237,7 @@ const Sequence = () => {
           <div className={styles.title}>Drag and Drop rooms to the box</div>
           <div className={styles.rooms_table}>
             <Droppable key={"allRooms"} droppableId={"allRooms"}>
-              {(provided, snapshot) => (
+              {(provided) => (
                 <>
                   <div
                     className={styles.rooms_table}
@@ -234,7 +251,7 @@ const Sequence = () => {
                     />
                     {provided.placeholder}
                     {columns["allRooms"]?.rooms?.map(
-                      (room: any, index: any) => (
+                      (room: Room, index: string) => (
                         <SequenceRoom room={room} index={index} />
                       )
                     )}

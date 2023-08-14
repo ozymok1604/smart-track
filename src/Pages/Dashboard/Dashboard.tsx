@@ -9,19 +9,21 @@ const Dashboard = () => {
     (state: SmartTrackState) => state.isOpenWardOptions
   );
 
-  const dashboardInformation = JSON.parse(
-    localStorage.getItem("dashboardInformation") || "[]"
+  const employees = JSON.parse(localStorage.getItem("employees") || "[]");
+
+  const doctors = employees.filter(
+    (employee: Employee) => employee.type == "Doctors"
   );
 
   return (
     <div className={styles.page}>
       <SideBarMenu />
       {isOpen && <OptionsModal />}
+
       <div className={styles.page_content}>
-        <DoctorLine />
-        <DoctorLine />
-        <DoctorLine />
-        <DoctorLine />
+        {doctors?.map((doctor: Doctor) => (
+          <DoctorLine doctor={doctor} />
+        ))}
       </div>
     </div>
   );

@@ -4,22 +4,18 @@ import { HospitalWard } from "../HospitalWard";
 import { openWardOptionsModal } from "../../store";
 import styles from "./styles.module.scss";
 
-const DoctorLine = () => {
+const DoctorLine = ({ doctor }: { doctor?: Doctor }) => {
   const dispatch = useDispatch();
 
-  const handleCloseModal = () => {
+  const handleOpenWardModal = () => {
     dispatch(openWardOptionsModal(true));
   };
   return (
     <div className={styles.doctor_line}>
-      <DoctorCard />
-
-      <HospitalWard handleCloseModal={handleCloseModal} />
-
-      <HospitalWard />
-      <HospitalWard />
-      <HospitalWard />
-      <HospitalWard />
+      <DoctorCard doctor={doctor} />
+      {doctor?.rooms?.map((room: any) => (
+        <HospitalWard room={room} onClick={handleOpenWardModal} />
+      ))}
     </div>
   );
 };

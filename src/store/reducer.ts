@@ -17,6 +17,14 @@ const initialState: SmartTrackState = {
   editedRoom: {},
   selectedDoctor: {},
   selectedRooms: [],
+  isShowingAllert: false,
+  allertModalParameters: {
+    isOpen: false,
+    type: "",
+  },
+  allertData: {},
+  allert: {},
+  editedAllert: {},
 };
 
 const reducer = (
@@ -25,6 +33,7 @@ const reducer = (
 ) => {
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
   const rooms = JSON.parse(localStorage.getItem("rooms") || "[]");
+  const allerts = JSON.parse(localStorage.getItem("allerts") || "[]");
 
   switch (action.type) {
     case actionTypes.CHANGE_TAB:
@@ -153,6 +162,56 @@ const reducer = (
       return {
         ...state,
         selectedRooms: action.selectedRooms,
+      };
+
+    case actionTypes.START_SHOWING_ALLERT:
+      return {
+        ...state,
+        isShowingAllert: action.isShowingAllert,
+      };
+    case actionTypes.STOP_SHOWING_ALLERT:
+      return {
+        ...state,
+        isShowingAllert: action.isShowingAllert,
+      };
+    case actionTypes.OPEN_ALLERT_MODAL:
+      return {
+        ...state,
+        allertModalParameters: action.allertModalParameters,
+      };
+    case actionTypes.GET_ALLERT_DATA:
+      return {
+        ...state,
+        allertData: action.allertData,
+      };
+    case actionTypes.ADD_ALLERT:
+      const newAllertsList = action?.allert?.title
+        ? [...allerts, action.allert]
+        : [];
+      const filteredAllertsList = getFilteredList(newAllertsList);
+      window.localStorage.setItem(
+        "allerts",
+        JSON.stringify(filteredAllertsList)
+      );
+      return {
+        ...state,
+        allert: action.allert,
+      };
+    case actionTypes.EDIT_ALLERT:
+      console.log(action);
+      const indexEditedAllert = allerts.findIndex((allert: AllertData) => {
+        return allert?.id == state.allertData?.id;
+      });
+      console.log(indexEditedAllert);
+
+      allerts[indexEditedAllert] = action.editedAllert;
+
+      window.localStorage.setItem("allerts", JSON.stringify(allerts));
+      console.log(allerts);
+
+      return {
+        ...state,
+        editedAllert: action.editedAllert,
       };
   }
   return state;
