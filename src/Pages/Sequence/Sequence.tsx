@@ -154,7 +154,7 @@ const Sequence = () => {
         ...selectedDoctor,
         rooms: newDoctorRooms?.map((room: Room) => ({
           id: getRandomNumber(1000).toString(),
-          options: [],
+          options: room?.options,
           name: room?.name,
           doctor: selectedDoctor?.name,
         })),
@@ -166,7 +166,7 @@ const Sequence = () => {
         newDoctorRooms?.map((room: Room) => ({
           id: room.id,
           name: room?.name,
-          options: [],
+          options: room?.options,
           doctor: selectedDoctor?.name,
         }))
       )

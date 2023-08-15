@@ -1,10 +1,9 @@
+import { useSelector } from "react-redux";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editEmployee, openWardOptionsModal } from "../../store";
 import Close from "../../assets/Close.svg";
 import styles from "./styles.module.scss";
-import { useSelector } from "react-redux";
-import { useState } from "react";
-
 const OptionsModal = () => {
   const dispatch = useDispatch();
   const selectedRoom = useSelector((state: SmartTrackState) => state.room);
@@ -20,17 +19,27 @@ const OptionsModal = () => {
     selectedRoom?.options || []
   );
 
+  const settedNames = selectedRoom?.options.map((option: any) => option?.title);
+
+  const [selectedOptionsNames, setSelectedOptionsNames] =
+    useState<any>(settedNames);
+
   const handleChangeSelectedOptions = (selectedOption: any) => {
     const filteredOptions = selectedOptions.filter(
-      (option: string) => option != selectedOption
+      (option: any) => option.id != selectedOption.id
     );
-    if (selectedOptions.includes(selectedOption)) {
+    const filteredOptionsNames = selectedOptionsNames.filter(
+      (title: any) => title != selectedOption.title
+    );
+    if (selectedOptionsNames.includes(selectedOption.title)) {
       setSelectedOptions([...filteredOptions]);
+      setSelectedOptionsNames([...filteredOptionsNames]);
     } else {
       setSelectedOptions([...selectedOptions, selectedOption]);
+      setSelectedOptionsNames([...selectedOptionsNames, selectedOption.title]);
     }
   };
-  console.log(selectedOptions);
+
   const handleCloseModal = () => {
     dispatch(openWardOptionsModal(false));
     const newRooms = selectedDoctor?.rooms?.map((room: any) => {
@@ -46,7 +55,6 @@ const OptionsModal = () => {
       }
     });
     dispatch(editEmployee({ ...selectedDoctor, rooms: newRooms }));
-    console.log({ ...selectedDoctor, rooms: newRooms });
   };
   return (
     <div onClick={handleCloseModal} className={styles.modal}>
@@ -59,11 +67,11 @@ const OptionsModal = () => {
             return (
               <div
                 style={{
-                  backgroundColor: selectedOptions.includes(item.title)
+                  backgroundColor: selectedOptionsNames.includes(item.title)
                     ? "#6AC7BE66"
                     : "",
                 }}
-                onClick={() => handleChangeSelectedOptions(item.title)}
+                onClick={() => handleChangeSelectedOptions(item)}
                 className={styles.option_container}
               >
                 <div className={styles[item.style]}>{item.title[0]}</div>
@@ -77,11 +85,11 @@ const OptionsModal = () => {
             return (
               <div
                 style={{
-                  backgroundColor: selectedOptions.includes(item.title)
+                  backgroundColor: selectedOptionsNames.includes(item.title)
                     ? "#6AC7BE66"
                     : "",
                 }}
-                onClick={() => handleChangeSelectedOptions(item.title)}
+                onClick={() => handleChangeSelectedOptions(item)}
                 className={styles.option_container}
               >
                 <div className={styles[item.style]}>{item.title[0]}</div>

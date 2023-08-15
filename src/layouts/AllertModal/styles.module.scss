@@ -72,14 +72,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $dark-purple;
   color: $dark-purple;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $bright-dark-purple;
 }
@@ -90,14 +87,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-turquoise;
   color: $light-turquoise;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-light-turquoise;
 }
@@ -108,14 +102,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $orange;
   color: $orange;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-orange;
 }
@@ -126,14 +117,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-purple;
   color: $light-purple;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-light-purple;
 }
@@ -144,14 +132,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $olive-turquoise;
   color: $olive-turquoise;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-olive-turquoise;
 }
@@ -162,14 +147,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-green;
   color: $light-green;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-light-green;
 }
@@ -194,6 +176,7 @@
 
 .allerts_container {
   width: 90%;
+  height: 10vh;
   padding-bottom: 30px;
   display: flex;
   flex-direction: row;

@@ -1,13 +1,13 @@
+import { useDispatch } from "react-redux";
 import Edit from "../../assets/Edit.svg";
 import Delete from "../../assets/Delete.svg";
 import Assistant from "../../assets/Assistant.svg";
-import styles from "./styles.module.scss";
-import { useDispatch } from "react-redux";
 import {
   getEmployeeData,
   openAddStuffModal,
   openDeleteModal,
 } from "../../store";
+import styles from "./styles.module.scss";
 
 const AssistantRow = ({
   row,
@@ -33,9 +33,9 @@ const AssistantRow = ({
       <div className={styles.index}>
         <div className={styles.text}>{index + 1}</div>
       </div>
-      <div>{row.name}</div>
-      <div>{row.email}</div>
-      <div>{row.phone}</div>
+      <div className={styles.name}>{row?.name}</div>
+      <div className={styles.email}>{row?.email}</div>
+      <div className={styles.phone}>{row?.phone}</div>
 
       <div className={styles.actions}>
         {!receptionistRow && (

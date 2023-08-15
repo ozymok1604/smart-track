@@ -18,7 +18,6 @@ const Select = ({ doctors }: { doctors: Doctor[] }) => {
   const handleChangeValue = (option: Doctor) => {
     setValue(option.name);
     dispatch(selectDoctor(option));
-    console.log(option);
     setIsOpen(!isOpen);
   };
   return (

@@ -30,9 +30,6 @@ const Stuff = () => {
 
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
 
-  console.log(editedEmployee);
-  console.log(employees);
-
   const doctors = employees.filter(
     (employee: Doctor) => employee.type == "Doctors"
   );

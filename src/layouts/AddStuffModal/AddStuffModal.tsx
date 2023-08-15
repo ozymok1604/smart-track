@@ -9,19 +9,20 @@ import Delete from "../../assets/AllertDelete.svg";
 import { getRandomNumber } from "../../utils/getRandomNumber";
 import styles from "./styles.module.scss";
 
-const AddStuffModal = ({
-  actionType,
-  employeeType,
-}: {
-  employeeType?: string;
-  actionType?: string;
-}) => {
+const AddStuffModal = ({ employeeType }: { employeeType?: string }) => {
   const employeeData = useSelector(
     (state: SmartTrackState) => state.employeeData
   );
   const stuffModalParameters = useSelector(
     (state: SmartTrackState) => state.stuffModalParameters
   );
+
+  const [addAllertIsOpen, setAddAllertIsOpen] = useState<boolean>(false);
+
+  const onAddAnAllertClick = () => {
+    setAddAllertIsOpen(true);
+  };
+
   const dispatch = useDispatch();
 
   const isEdit = stuffModalParameters.type == "edit";
@@ -60,6 +61,19 @@ const AddStuffModal = ({
     { title: "Patient", value: "patient" },
     { title: "Emergency", value: "emergency" },
     { title: "Empty", value: "empty" },
+  ];
+
+  const additionalAllerts = [
+    { title: "Allert", style: "allert1", value: "allert1" },
+    { title: "Allert", style: "allert2", value: "allert2" },
+    { title: "Allert", style: "allert3", value: "allert3" },
+    { title: "Allert", style: "allert4", value: "allert4" },
+    { title: "Allert", style: "allert5", value: "allert5" },
+    { title: "Allert", style: "allert6", value: "allert6" },
+    { title: "Allert", style: "allert7", value: "allert7" },
+    { title: "Allert", style: "allert8", value: "allert8" },
+    { title: "Allert", style: "allert9", value: "allert9" },
+    { title: "Allert", style: "allert10", value: "allert10" },
   ];
 
   const handleAddAllert = (allert: string) => {
@@ -164,7 +178,45 @@ const AddStuffModal = ({
                 </div>
               ))}
             </div>
-            <Button type="add" title="Add an Allert" />
+            <div className={styles.additional_title}>Choose allert</div>
+            {addAllertIsOpen ? (
+              <div className={styles.additional_allerts_container}>
+                {additionalAllerts.map((additionalAllert: any) => (
+                  <div
+                    onClick={() => handleAddAllert(additionalAllert?.value)}
+                    className={styles.additional_allert}
+                    style={{
+                      border: addedAllerts.includes(additionalAllert.value)
+                        ? "2px solid #6ac7be"
+                        : " ",
+                    }}
+                  >
+                    <div className={styles[additionalAllert.style]}></div>
+                    <div
+                      style={{
+                        color: addedAllerts.includes(additionalAllert.value)
+                          ? "#6ac7be"
+                          : "#212121",
+                        fontWeight: addedAllerts.includes(
+                          additionalAllert.value
+                        )
+                          ? "700"
+                          : "400",
+                      }}
+                      className={styles.allert_title}
+                    >
+                      {additionalAllert.title}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <Button
+                onClick={onAddAnAllertClick}
+                type="add"
+                title="Add an Allert"
+              />
+            )}
           </>
         )}
 

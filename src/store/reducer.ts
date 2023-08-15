@@ -59,7 +59,7 @@ const reducer = (
     case actionTypes.ADD_NEW_EMPLOYEE:
       const newEmployeesList = action.employee.name
         ? [...employees, action.employee]
-        : [];
+        : [...employees];
       const filteredList = getFilteredList(newEmployeesList);
       window.localStorage.setItem("employees", JSON.stringify(filteredList));
       return {
@@ -73,12 +73,8 @@ const reducer = (
         employeeData: action.employeeData,
       };
     case actionTypes.EDIT_EMPLOYEE:
-      console.log(action);
       const indexEditedEmployee = employees.findIndex((employee: Employee) => {
-        return (
-          employee.id == state.employeeData.id ||
-          employee.id == action.editedEmployee.id
-        );
+        return employee.id == action.editedEmployee.id;
       });
 
       employees[indexEditedEmployee] = action.editedEmployee;
@@ -99,7 +95,6 @@ const reducer = (
         (item: Employee) => item.id != action.employeeId
       );
       window.localStorage.setItem("employees", JSON.stringify(newList));
-      console.log(action.employeeId);
       return {
         ...state,
         employeeId: action.employeeId,
@@ -113,7 +108,7 @@ const reducer = (
       const newRoomsList = action.room.name ? [...rooms, action.room] : [];
       const filteredRoomsList = getFilteredList(newRoomsList);
       window.localStorage.setItem("rooms", JSON.stringify(filteredRoomsList));
-      console.log(rooms);
+
       return {
         ...state,
         room: action.room,
@@ -198,16 +193,13 @@ const reducer = (
         allert: action.allert,
       };
     case actionTypes.EDIT_ALLERT:
-      console.log(action);
       const indexEditedAllert = allerts.findIndex((allert: AllertData) => {
         return allert?.id == state.allertData?.id;
       });
-      console.log(indexEditedAllert);
 
       allerts[indexEditedAllert] = action.editedAllert;
 
       window.localStorage.setItem("allerts", JSON.stringify(allerts));
-      console.log(allerts);
 
       return {
         ...state,

@@ -92,7 +92,7 @@
   line-height: 45px;
 
   border-radius: 50%;
-  background: $light-yellow;
+  background: $opacity-light-yellow;
 }
 
 .doctor {
@@ -210,7 +210,7 @@
 .financial:hover {
   cursor: pointer;
 }
-.patientIn:hover {
+.patient:hover {
   cursor: pointer;
 }
 
@@ -218,4 +218,234 @@
   width: 100%;
   justify-content: space-around;
   display: flex;
+}
+
+.additional_allerts_container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5px;
+  width: 95%;
+  flex-wrap: wrap;
+}
+
+.additional_allert {
+  padding-left: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 150px;
+  height: 55px;
+  border: 2px solid transparent;
+  border-radius: 30px;
+}
+.additional_allert:hover {
+  cursor: pointer;
+  border: 2px solid $light-asphalt;
+}
+
+.additional_title {
+  width: 95%;
+  padding-top: 15px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  padding-left: 20px;
+  border-top: 1px solid $light-asphalt;
+}
+
+.allert_title {
+  padding-left: 15px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.allert1 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $dark-green;
+  color: $dark-green;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-dark-green;
+}
+
+.allert2 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $dark-turquoise;
+  color: $dark-turquoise;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-dark-turquoise;
+}
+
+.allert3 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $blue;
+  color: $blue;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-blue;
+}
+
+.allert4 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-yellow;
+  color: $light-yellow;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-light-yellow;
+}
+.allert5 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-green;
+  color: $light-green;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-light-green;
+}
+
+.allert6 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $dark-purple;
+  color: $dark-purple;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-dark-purple;
+}
+
+.allert7 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $orange;
+  color: $orange;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-orange;
+}
+
+.allert8 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-purple;
+  color: $light-purple;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-light-purple;
+}
+
+.allert9 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-turquoise;
+  color: $light-turquoise;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-light-turquoise;
+}
+
+.allert10 {
+  display: flex;
+  width: 45px;
+  height: 45px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $olive-turquoise;
+  color: $olive-turquoise;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-olive-turquoise;
 }

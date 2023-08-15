@@ -26,7 +26,6 @@ const Allerts = () => {
   const dispatch = useDispatch();
   const allerts = JSON.parse(localStorage.getItem("allerts") || "[]");
   const storageAllerts = JSON.parse(localStorage.getItem("allerts") || "[]");
-  console.log(storageAllerts);
   storageAllerts.length < 8 &&
     window.localStorage.setItem("allerts", JSON.stringify(options));
 

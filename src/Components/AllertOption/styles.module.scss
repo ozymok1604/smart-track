@@ -8,7 +8,6 @@
   align-items: center;
   background-color: $white;
   border: none;
-
   border-radius: 20px 0px 20px 0px;
 }
 
@@ -66,16 +65,13 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $yellow;
   color: $yellow;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
-  background: $light-yellow;
+  background: $opacity-light-yellow;
 }
 
 .assistantRequired {
@@ -84,16 +80,13 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $yellow;
   color: $orange;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
-  background: $light-yellow;
+  background: $opacity-light-yellow;
 }
 .doctorRequired {
   display: flex;
@@ -101,14 +94,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $sky;
   color: $orange;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $bright-blue;
 }
@@ -117,17 +107,13 @@
   display: flex;
   width: 35px;
   height: 35px;
-
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $sky;
   color: $sky;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $bright-blue;
 }
@@ -138,14 +124,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $olive-green;
   color: $olive-green;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $bright-green;
 }
@@ -154,17 +137,13 @@
   display: flex;
   width: 35px;
   height: 35px;
-
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-violet;
   color: $light-violet;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $bright-viloet;
 }
@@ -173,17 +152,13 @@
   display: flex;
   width: 35px;
   height: 35px;
-
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-violet;
   color: $orange;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $bright-viloet;
 }
@@ -194,14 +169,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $red;
   color: $red;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $bright-red;
 }
@@ -212,14 +184,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-asphalt;
   color: $white;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $white;
 }
@@ -229,14 +198,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $dark-purple;
   color: $dark-purple;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $bright-dark-purple;
 }
@@ -247,14 +213,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-turquoise;
   color: $light-turquoise;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-light-turquoise;
 }
@@ -265,14 +228,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $orange;
   color: $orange;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-orange;
 }
@@ -283,14 +243,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-purple;
   color: $light-purple;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-light-purple;
 }
@@ -301,14 +258,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $olive-turquoise;
   color: $olive-turquoise;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-olive-turquoise;
 }
@@ -319,14 +273,11 @@
   height: 35px;
   align-items: center;
   justify-content: space-around;
-
   border: 2px solid $light-green;
   color: $light-green;
-
   font-size: 30px;
   font-weight: 500;
   line-height: 45px;
-
   border-radius: 50%;
   background: $opacity-light-green;
 }
