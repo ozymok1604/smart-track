@@ -25,6 +25,8 @@ type DoctorRow = {
 };
 
 type Employee = {
+  stopped?: boolean;
+  countInLine?: number;
   id?: number;
   type?: string;
   name?: string;
@@ -35,13 +37,15 @@ type Employee = {
 };
 
 type Doctor = {
+  stopped?: boolean;
+  countInLine?: number;
   id?: number;
   type?: string;
   name?: string;
   email?: string;
   phone?: string;
   allerts?: any[];
-  rooms?: string[];
+  rooms?: Room[];
 };
 
 type Assistant = {
@@ -76,11 +80,13 @@ type ReceptionistRow = {
 type Option = {
   title: string;
   value: string;
+  style: string;
 };
 
 type Room = {
   id?: any;
   name?: string;
+  options?: any[];
   doctor?: string;
 };
 

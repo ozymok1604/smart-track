@@ -1,21 +1,35 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { Button } from "../Button";
-import { changeCount } from "../../store";
+import { editEmployee } from "../../store";
 import styles from "./styles.module.scss";
 
 const DoctorCard = ({ doctor }: { doctor?: Doctor }) => {
-  const count = useSelector((state: SmartTrackState) => state.count);
   const dispatch = useDispatch();
-  const [countNumber, changeCountNumber] = useState(count);
+  const [countNumber, changeCountNumber] = useState<number>(
+    doctor?.countInLine || 0
+  );
+
   const handleAddCountNumber = () => {
     changeCountNumber(countNumber + 1);
-    dispatch(changeCount(countNumber));
+    dispatch(editEmployee({ ...doctor, countInLine: countNumber + 1 }));
   };
-  const handleMinuscountNumber = () => {
-    changeCountNumber(countNumber - 1);
-    dispatch(changeCount(countNumber));
+  const handleMinusCountNumber = () => {
+    changeCountNumber(countNumber - 1 >= 0 ? countNumber - 1 : 0);
+    dispatch(
+      editEmployee({
+        ...doctor,
+        countInLine: countNumber - 1 >= 0 ? countNumber - 1 : 0,
+      })
+    );
+  };
+
+  const handleStopTheLine = () => {
+    dispatch(editEmployee({ ...doctor, stopped: !doctor?.stopped }));
+  };
+
+  const handleResetRooms = () => {
+    dispatch(editEmployee({ ...doctor, rooms: [] }));
   };
 
   const doctorName = doctor?.name?.split(" ");
@@ -23,7 +37,7 @@ const DoctorCard = ({ doctor }: { doctor?: Doctor }) => {
   return (
     <div className={styles.flex_container}>
       <div className={styles.right_container}>
-        <Button type="reset" title="Reset" />
+        <Button onClick={handleResetRooms} type="reset" title="Reset" />
       </div>
       <div className={styles.left_container}>
         <div className={styles.doctor_name}>{doctorName?.[0]}</div>
@@ -36,7 +50,7 @@ const DoctorCard = ({ doctor }: { doctor?: Doctor }) => {
       </div>
 
       <div className={styles.line_options}>
-        <div className={styles.change_count} onClick={handleMinuscountNumber}>
+        <div className={styles.change_count} onClick={handleMinusCountNumber}>
           -
         </div>
         <div className={styles.count}>{countNumber}</div>
@@ -44,7 +58,11 @@ const DoctorCard = ({ doctor }: { doctor?: Doctor }) => {
           +
         </div>
         <div>in line</div>
-        <Button title="stop the line" type="stop" />
+        <Button
+          onClick={handleStopTheLine}
+          title={doctor?.stopped ? "start the line" : "stop the line"}
+          type="stop"
+        />
       </div>
     </div>
   );

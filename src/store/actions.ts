@@ -150,3 +150,10 @@ export const editAllert = (editedAllert?: AllertData) => {
     editedAllert,
   };
 };
+
+export const getRoomData = (room?: Room) => {
+  return {
+    type: actionTypes.GET_ROOM_DATA,
+    room,
+  };
+};

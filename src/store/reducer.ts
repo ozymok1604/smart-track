@@ -213,6 +213,11 @@ const reducer = (
         ...state,
         editedAllert: action.editedAllert,
       };
+    case actionTypes.GET_ROOM_DATA:
+      return {
+        ...state,
+        room: action.room,
+      };
   }
   return state;
 };

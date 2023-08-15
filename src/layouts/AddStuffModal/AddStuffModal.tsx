@@ -31,9 +31,12 @@ const AddStuffModal = ({
   );
   const [stuffData, setStuffData] = useState<Employee>({
     id: isEdit ? employeeData?.id : getRandomNumber(1000),
+    countInLine: isEdit ? employeeData?.countInLine : 0,
+    stopped: isEdit ? employeeData?.stopped : false,
     type: employeeType || employeeData.type,
     name: isEdit ? employeeData?.name : "",
     email: isEdit ? employeeData?.email : "",
+    rooms: employeeData?.rooms,
     phone: isEdit ? employeeData?.phone : "",
     allerts: isEdit ? employeeData?.allerts : [],
   });

@@ -26,7 +26,7 @@ const Sequence = () => {
   const room = useSelector((state: SmartTrackState) => state.room);
   const deletedRoom = useSelector((state: SmartTrackState) => state.roomId);
   const selectedDoctor = useSelector(
-    (state: SmartTrackState) => state.selectedDoctor
+    (state: SmartTrackState) => state?.selectedDoctor
   );
   const isShowingAllert = useSelector(
     (state: SmartTrackState) => state.isShowingAllert
@@ -82,36 +82,50 @@ const Sequence = () => {
   }) => {
     if (!result.destination) return;
     const { source, destination } = result;
-    if (source.droppableId !== destination.droppableId) {
-      const sourceColumn = columns[source.droppableId];
-      const destColumn = columns[destination.droppableId];
-      const sourceItems = [...sourceColumn.rooms];
-      const destItems = [...destColumn.rooms];
-      const [removed] = sourceItems.splice(source.index, 1);
-      destItems.splice(destination.index, 0, removed);
-      setColumns({
-        ...columns,
-        [source.droppableId]: {
-          ...sourceColumn,
-          rooms: sourceItems,
-        },
-        [destination.droppableId]: {
-          ...destColumn,
-          rooms: getFilteredListNames(destItems),
-        },
-      });
+    const sourceColumn = columns[source.droppableId];
+    const destColumn = columns[destination.droppableId];
+    const sourceItems = [...sourceColumn.rooms];
+    const destItems = [...destColumn.rooms];
+
+    if (selectedDoctor?.stopped == true || selectedDoctor?.countInLine == 0) {
+      return;
     } else {
-      const column = columns[source.droppableId];
-      const copiedItems = [...column.rooms];
-      const [removed] = copiedItems.splice(source.index, 1);
-      copiedItems.splice(destination.index, 0, removed);
-      setColumns({
-        ...columns,
-        [source.droppableId]: {
-          ...column,
-          rooms: copiedItems,
-        },
-      });
+      if (
+        selectedDoctor?.countInLine &&
+        destItems.length + 1 > selectedDoctor?.countInLine &&
+        result.destination.droppableId == "doctorRooms"
+      ) {
+        return;
+      } else {
+        if (source.droppableId !== destination.droppableId) {
+          const [removed] = sourceItems.splice(source.index, 1);
+
+          destItems.splice(destination.index, 0, removed);
+          setColumns({
+            ...columns,
+            [source.droppableId]: {
+              ...sourceColumn,
+              rooms: sourceItems,
+            },
+            [destination.droppableId]: {
+              ...destColumn,
+              rooms: getFilteredListNames(destItems),
+            },
+          });
+        } else {
+          const column = columns[source.droppableId];
+          const copiedItems = [...column.rooms];
+          const [removed] = copiedItems.splice(source.index, 1);
+          copiedItems.splice(destination.index, 0, removed);
+          setColumns({
+            ...columns,
+            [source.droppableId]: {
+              ...column,
+              rooms: copiedItems,
+            },
+          });
+        }
+      }
     }
   };
   useEffect(() => {
@@ -140,6 +154,7 @@ const Sequence = () => {
         ...selectedDoctor,
         rooms: newDoctorRooms?.map((room: Room) => ({
           id: getRandomNumber(1000).toString(),
+          options: [],
           name: room?.name,
           doctor: selectedDoctor?.name,
         })),
@@ -151,6 +166,7 @@ const Sequence = () => {
         newDoctorRooms?.map((room: Room) => ({
           id: room.id,
           name: room?.name,
+          options: [],
           doctor: selectedDoctor?.name,
         }))
       )
@@ -177,6 +193,7 @@ const Sequence = () => {
       renameRooms(
         roomsToRename?.map((room: Room) => ({
           id: room.id,
+          options: [],
           name: room?.name,
           doctor: "",
         }))

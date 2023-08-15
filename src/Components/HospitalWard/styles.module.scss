@@ -87,3 +87,170 @@
 .arrow {
   padding-left: 5px;
 }
+
+.assistantIn {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $yellow;
+  color: $yellow;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $light-yellow;
+}
+
+.assistantRequired {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $yellow;
+  color: $orange;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $light-yellow;
+}
+.doctorRequired {
+  display: flex;
+  width: 65px;
+  height: 65px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $sky;
+  color: $orange;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-blue;
+}
+
+.doctorIn {
+  display: flex;
+  width: 65px;
+  height: 65px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $sky;
+  color: $sky;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-blue;
+}
+
+.patientIn {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $olive-green;
+  color: $olive-green;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-green;
+}
+
+.financialIn {
+  display: flex;
+  width: 65px;
+  height: 65px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-violet;
+  color: $light-violet;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-viloet;
+}
+
+.financialRequired {
+  display: flex;
+  width: 65px;
+  height: 65px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-violet;
+  color: $orange;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-viloet;
+}
+
+.emergency {
+  display: flex;
+  width: 65px;
+  height: 65px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $red;
+  color: $red;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-red;
+}
+
+.empty {
+  display: flex;
+  width: 65px;
+  height: 65px;
+
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-asphalt;
+  color: $white;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $white;
+}

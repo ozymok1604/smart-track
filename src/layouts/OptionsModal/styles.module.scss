@@ -24,6 +24,7 @@
   padding-left: 40px;
   width: 60vw;
   height: 60vh;
+  overflow: hidden;
   border: none;
   border-radius: 20px;
   background-color: $white;
@@ -52,7 +53,7 @@
 }
 .option_container:hover {
   cursor: pointer;
-  background-color: $bright-turquoise;
+  background-color: $ligher-grey;
 }
 
 .left_column {
@@ -227,4 +228,112 @@
 }
 .title {
   padding-left: 15px;
+}
+
+.allert1 {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $dark-purple;
+  color: $dark-purple;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $bright-dark-purple;
+}
+
+.allert2 {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-turquoise;
+  color: $light-turquoise;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-light-turquoise;
+}
+
+.allert3 {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $orange;
+  color: $orange;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-orange;
+}
+
+.allert4 {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-purple;
+  color: $light-purple;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-light-purple;
+}
+
+.allert5 {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $olive-turquoise;
+  color: $olive-turquoise;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-olive-turquoise;
+}
+
+.allert6 {
+  display: flex;
+  width: 65px;
+  height: 65px;
+  align-items: center;
+  justify-content: space-around;
+
+  border: 2px solid $light-green;
+  color: $light-green;
+
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 45px;
+
+  border-radius: 50%;
+  background: $opacity-light-green;
 }

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { DoctorLine } from "../../Components/DoctorLine";
 import { OptionsModal } from "../../layouts/OptionsModal";
@@ -8,12 +9,24 @@ const Dashboard = () => {
   const isOpen = useSelector(
     (state: SmartTrackState) => state.isOpenWardOptions
   );
+  const editedDoctor = useSelector(
+    (state: SmartTrackState) => state.editedEmployee
+  );
+  const getFilteredDoctors = (employees: Employee[]) => {
+    const newList = employees.filter(
+      (employee: Employee) => employee.type == "Doctors"
+    );
+
+    return newList;
+  };
 
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
 
-  const doctors = employees.filter(
-    (employee: Employee) => employee.type == "Doctors"
-  );
+  const [doctors, setDoctors] = useState<any[]>(getFilteredDoctors(employees));
+
+  useEffect(() => {
+    setDoctors(getFilteredDoctors(employees));
+  }, [editedDoctor]);
 
   return (
     <div className={styles.page}>

@@ -28,8 +28,17 @@ const RoomModal = ({ type }: { type?: string }) => {
 
   const handleSaveForm = () => {
     type == "edit"
-      ? dispatch(editRoom({ name: roomName, doctor: "", id: room?.id }))
-      : dispatch(addRoom({ name: roomName, doctor: "", id: roomId }));
+      ? dispatch(
+          editRoom({
+            options: room?.options,
+            name: roomName,
+            doctor: "",
+            id: room?.id,
+          })
+        )
+      : dispatch(
+          addRoom({ options: [], name: roomName, doctor: "", id: roomId })
+        );
     handleCloseModal();
   };
 
