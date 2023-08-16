@@ -24,7 +24,9 @@ const Allerts = () => {
     (state: SmartTrackState) => state.allertModalParameters?.isOpen
   );
   const dispatch = useDispatch();
-  const allerts = JSON.parse(localStorage.getItem("allerts") || "[]");
+  const allerts = JSON.parse(
+    localStorage.getItem("allerts") || JSON.stringify(options)
+  );
   const storageAllerts = JSON.parse(localStorage.getItem("allerts") || "[]");
   storageAllerts.length < 8 &&
     window.localStorage.setItem("allerts", JSON.stringify(options));
