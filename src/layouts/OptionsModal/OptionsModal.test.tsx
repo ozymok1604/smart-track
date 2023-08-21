@@ -1,8 +1,8 @@
 import { createStore } from "redux";
-import { editEmployee, openWardOptionsModal, reducer } from "../store";
+import { editEmployee, openWardOptionsModal, reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { OptionsModal } from "../layouts/OptionsModal";
+import { OptionsModal } from ".";
 
 test("Options Modal renders correctly", () => {
   const store = createStore(reducer);

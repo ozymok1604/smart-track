@@ -1,7 +1,7 @@
 import { createStore } from "redux";
-import { reducer } from "../store";
+import { reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { MenuItem } from "../Components/MenuItem";
+import { MenuItem } from ".";
 import { Provider } from "react-redux";
 import Sequence from "../assets/Sequence.svg";
 import { BrowserRouter } from "react-router-dom";

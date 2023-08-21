@@ -1,7 +1,7 @@
 import { createStore } from "redux";
-import { reducer } from "../store";
+import { reducer } from "../../store";
 import { render, screen } from "@testing-library/react";
-import { Table } from "../Components/Table";
+import { Table } from ".";
 import { Provider } from "react-redux";
 
 test("Table renders correctly", () => {

@@ -1,7 +1,7 @@
 import { Provider } from "react-redux";
-import { DoctorLine } from "../Components/DoctorLine";
+import { DoctorLine } from ".";
 import { render, screen } from "@testing-library/react";
-import { store } from "../store";
+import { store } from "../../store";
 
 test("Doctor Line renders correctly", () => {
   const doctor = {

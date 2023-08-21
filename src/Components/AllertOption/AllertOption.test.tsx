@@ -1,9 +1,9 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 
-import { AllertOption } from "../Components/AllertOption";
+import { AllertOption } from ".";
 
 import { useDispatch } from "react-redux";
-import { openAllertModal, getAllertData } from "../store";
+import { openAllertModal, getAllertData } from "../../store";
 
 jest.mock("react-redux");
 

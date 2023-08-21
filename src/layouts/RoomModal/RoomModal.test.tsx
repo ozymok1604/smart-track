@@ -1,9 +1,9 @@
 import { createStore } from "redux";
-import { addRoom, editRoom, openRoomModal, reducer } from "../store";
+import { addRoom, editRoom, openRoomModal, reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { RoomModal } from "../layouts/RoomModal";
+import { RoomModal } from ".";
 import { Provider } from "react-redux";
-import { getRandomNumber } from "../utils/getRandomNumber";
+import { getRandomNumber } from "../../utils/getRandomNumber";
 
 test("Add Room Modal renders correctly", () => {
   const store = createStore(reducer);

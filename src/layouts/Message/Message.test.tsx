@@ -1,8 +1,8 @@
 import { createStore } from "redux";
-import { reducer, stopShowingAllert } from "../store";
+import { reducer, stopShowingAllert } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { Message } from "../layouts/Message";
+import { Message } from ".";
 
 test("Message renders correctly", () => {
   const store = createStore(reducer);

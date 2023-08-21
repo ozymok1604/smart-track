@@ -1,9 +1,9 @@
 import { createStore } from "redux";
-import { addNewEmployee, openAddStuffModal, reducer } from "../store";
+import { addNewEmployee, openAddStuffModal, reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { AddStuffModal } from "../layouts/AddStuffModal";
-import { getRandomNumber } from "../utils/getRandomNumber";
+import { AddStuffModal } from ".";
+import { getRandomNumber } from "../../utils/getRandomNumber";
 
 test("Add Stuff Modal renders correctly", () => {
   const allerts = [

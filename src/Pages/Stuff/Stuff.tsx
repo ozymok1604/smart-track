@@ -9,6 +9,7 @@ import styles from "./styles.module.scss";
 
 const Stuff = () => {
   const tabs = ["Doctors", "Assistants", "Receptionists"];
+
   const activeTab = useSelector((state: SmartTrackState) => state.tab);
 
   const dispatch = useDispatch();

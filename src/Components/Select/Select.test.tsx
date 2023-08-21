@@ -1,8 +1,8 @@
 import { createStore } from "redux";
-import { reducer } from "../store";
+import { reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { Select } from "../Components/Select";
+import { Select } from ".";
 
 test("Select renders correctly", () => {
   const store = createStore(reducer);

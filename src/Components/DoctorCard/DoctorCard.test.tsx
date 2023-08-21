@@ -1,7 +1,7 @@
 import { createStore } from "redux";
-import { editEmployee, reducer } from "../store";
+import { editEmployee, reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { DoctorCard } from "../Components/DoctorCard";
+import { DoctorCard } from ".";
 import { Provider } from "react-redux";
 
 test("Doctor Card renders correctly", () => {

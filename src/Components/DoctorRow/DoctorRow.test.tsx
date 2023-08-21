@@ -1,11 +1,15 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
-import { DoctorRow } from "../Components/DoctorRow";
+import { DoctorRow } from ".";
 import { Provider } from "react-redux";
-import { getEmployeeData, openAddStuffModal, openDeleteModal } from "../store";
+import {
+  getEmployeeData,
+  openAddStuffModal,
+  openDeleteModal,
+} from "../../store";
 import { useDispatch } from "react-redux";
 import { createStore } from "redux";
-import { reducer } from "../store/reducer";
+import { reducer } from "../../store/reducer";
 
 test("DoctorRow renders correctly", () => {
   const store = createStore(reducer);

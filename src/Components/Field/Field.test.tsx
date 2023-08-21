@@ -4,7 +4,7 @@ import {
   fireEvent,
   getByPlaceholderText,
 } from "@testing-library/react";
-import { Field } from "../Components/Field";
+import { Field } from ".";
 
 test("Field renders correctly", () => {
   const onChangeMock = jest.fn();

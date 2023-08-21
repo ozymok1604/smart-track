@@ -1,8 +1,8 @@
 import { createStore } from "redux";
-import { openDeleteModal, openRoomModal, reducer } from "../store";
+import { openDeleteModal, openRoomModal, reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { SequenceRoom } from "../Components/SequenceRoom";
+import { SequenceRoom } from ".";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 test("Sequence Room renders correctly", () => {

@@ -6,8 +6,8 @@ import {
   openAddStuffModal,
   openDeleteModal,
   reducer,
-} from "../store";
-import { AssistantRow } from "../Components/AssistantRow";
+} from "../../store";
+import { AssistantRow } from ".";
 
 test("Assistant and Receptionist Row renders correctly", () => {
   const store = createStore(reducer);

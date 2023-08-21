@@ -1,8 +1,8 @@
 import { createStore } from "redux";
-import { openAllertModal, reducer } from "../store";
+import { openAllertModal, reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { Allerts } from "../Pages/Allerts";
+import { Allerts } from ".";
 import { BrowserRouter } from "react-router-dom";
 
 test("Allerts Page renders correctly", () => {

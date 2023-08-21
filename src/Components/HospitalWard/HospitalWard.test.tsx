@@ -4,10 +4,10 @@ import {
   getRoomData,
   openWardOptionsModal,
   reducer,
-} from "../store";
+} from "../../store";
 import { fireEvent, getByText, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { HospitalWard } from "../Components/HospitalWard";
+import { HospitalWard } from ".";
 
 test("Hospital Ward renders correctly", () => {
   const store = createStore(reducer);

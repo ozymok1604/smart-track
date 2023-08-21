@@ -1,9 +1,9 @@
 import { createStore } from "redux";
-import { deleteEmployee, openDeleteModal, reducer } from "../store";
+import { deleteEmployee, openDeleteModal, reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { DeleteModal } from "../layouts/DeleteModal";
+import { DeleteModal } from ".";
 import { Provider } from "react-redux";
-import { store } from "../store";
+import { store } from "../../store";
 
 test("DeleteModal renders correctly", () => {
   const dispatchMock = jest.fn();

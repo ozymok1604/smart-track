@@ -1,8 +1,8 @@
 import { createStore } from "redux";
-import { addAllert, editAllert, openAllertModal, reducer } from "../store";
+import { addAllert, editAllert, openAllertModal, reducer } from "../../store";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { AllertModal } from "../layouts/AllertModal";
+import { AllertModal } from ".";
 
 test("Add Allert Modal renders correctly", () => {
   const allerts = [

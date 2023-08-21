@@ -4,9 +4,9 @@ import Dashboard from "../assets/Dashboard.svg";
 import Sequence from "../assets/Sequence.svg";
 import Stuff from "../assets/Stuff.svg";
 import { createStore } from "redux";
-import { reducer } from "../store";
+import { reducer } from "../../store";
 import { Provider } from "react-redux";
-import { SideBarMenu } from "../layouts/SideBarMenu";
+import { SideBarMenu } from ".";
 import { BrowserRouter } from "react-router-dom";
 
 test("SideBarMenu renders correctly", () => {

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { Button } from "../Components/Button";
+import { Button } from ".";
 import userEvent from "@testing-library/user-event";
 
 test("Button primary renders correctly", () => {
