@@ -14,10 +14,10 @@ const HospitalWard = ({ doctor, room }: { doctor?: Doctor; room: Room }) => {
     dispatch(getRoomData(room));
     dispatch(getEmployeeData(doctor as Doctor));
   };
-  const moreOneOption = (room?.options?.length as any) > 1 ? true : false;
+  const moreOneOption = (room?.options?.length as any) > 1;
   const style = room?.options?.[room?.options?.length - 1]?.style || "empty";
   return (
-    <div onClick={handleOpenWardModal} className={styles.ward}>
+    <div onClick={handleOpenWardModal} title="ward" className={styles.ward}>
       <div className={styles.header}>
         <div className={styles.ward_number}>
           <div className={styles.text}>{room.name}</div>

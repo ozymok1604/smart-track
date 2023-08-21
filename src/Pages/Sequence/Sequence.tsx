@@ -4,9 +4,8 @@ import { Select } from "../../Components/Select";
 import { SequenceRoom } from "../../Components/SequenceRoom";
 import { SideBarMenu } from "../../layouts/SideBarMenu";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RoomModal } from "../../layouts/RoomModal";
-import { useDispatch } from "react-redux";
 import {
   editEmployee,
   openRoomModal,
@@ -17,8 +16,8 @@ import {
 import { DeleteModal } from "../../layouts/DeleteModal";
 import { getRandomNumber } from "../../utils/getRandomNumber";
 import { getFilteredListNames } from "../../utils/getFilteredListNames";
-import styles from "./styles.module.scss";
 import { Message } from "../../layouts/Message";
+import styles from "./styles.module.scss";
 
 const Sequence = () => {
   const dispatch = useDispatch();
@@ -87,7 +86,11 @@ const Sequence = () => {
     const sourceItems = [...sourceColumn.rooms];
     const destItems = [...destColumn.rooms];
 
-    if (selectedDoctor?.stopped == true || selectedDoctor?.countInLine == 0) {
+    if (
+      selectedDoctor?.stopped == true ||
+      selectedDoctor?.countInLine == 0 ||
+      !selectedDoctor?.name
+    ) {
       return;
     } else {
       if (
@@ -131,7 +134,7 @@ const Sequence = () => {
   useEffect(() => {
     setNewDoctorRooms(columns.doctorRooms.rooms as Room[]);
   }, [columns]);
-  const hasRooms = columns["doctorRooms"].rooms?.[0] ? true : false;
+  const hasRooms = !!columns["doctorRooms"].rooms?.[0];
 
   const handleSaveDoctorRooms = () => {
     doctors.map((doctor: Doctor) => {

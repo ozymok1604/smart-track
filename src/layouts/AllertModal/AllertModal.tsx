@@ -7,10 +7,11 @@ import { Button } from "../../Components/Button";
 import { getRandomNumber } from "../../utils/getRandomNumber";
 import styles from "./styles.module.scss";
 
-const AllertModal = () => {
-  const type = useSelector(
+const AllertModal = ({ actionType }: { actionType?: any }) => {
+  const parametersType = useSelector(
     (state: SmartTrackState) => state.allertModalParameters?.type
   );
+  const type = actionType ? actionType : parametersType;
   const allertData = useSelector((state: SmartTrackState) => state.allertData);
   const dispatch = useDispatch();
   const handleCloseAllertModal = () => {
@@ -57,7 +58,7 @@ const AllertModal = () => {
           <img
             onClick={handleCloseAllertModal}
             className={styles.close}
-            alt="close"
+            alt="Close"
             src={Close}
           />
         </div>
@@ -75,13 +76,11 @@ const AllertModal = () => {
           <div className={styles.allerts_container}>
             {allerts.map((allert: string) => (
               <div
-                style={{
-                  border: allert == orderedStyle ? "solid 4px" : "",
-                  height: allert == orderedStyle ? "60px" : "45px",
-                  width: allert == orderedStyle ? "60px" : "45px",
-                }}
+                title={allert}
                 onClick={() => setOrderedStyle(allert)}
-                className={styles[allert]}
+                className={`${styles[allert]} ${
+                  orderedStyle === allert ? styles.ordered : ""
+                }`}
               ></div>
             ))}
           </div>

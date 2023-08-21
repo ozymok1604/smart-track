@@ -1,9 +1,9 @@
 import { useState } from "react";
 import ArrowDown from "../../assets/ArrowDown.svg";
 import ArrowUp from "../../assets/ArrowUp.svg";
-import styles from "./styles.module.scss";
 import { selectDoctor } from "../../store";
 import { useDispatch } from "react-redux";
+import styles from "./styles.module.scss";
 
 const Select = ({ doctors }: { doctors: Doctor[] }) => {
   const [value, setValue] = useState<any>("");

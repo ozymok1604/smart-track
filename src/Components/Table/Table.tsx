@@ -7,11 +7,11 @@ const Table = ({ rows, rowType }: { rows: DoctorRow[]; rowType: RowType }) => {
     <div className={styles.table}>
       {rows?.map((row: any, index: number) => {
         return rowType == "doctor" ? (
-          <DoctorRow row={row} index={index} />
+          <DoctorRow key={row.id} row={row} index={index} />
         ) : rowType == "assistant" ? (
-          <AssistantRow row={row} index={index} />
+          <AssistantRow key={row.id} row={row} index={index} />
         ) : (
-          <AssistantRow receptionistRow row={row} index={index} />
+          <AssistantRow key={row.id} receptionistRow row={row} index={index} />
         );
       })}
     </div>

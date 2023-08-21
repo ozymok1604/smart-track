@@ -16,7 +16,7 @@ const AllertOption = ({ index, allert }: { index: number; allert: any }) => {
         <div className={styles.name}>{allert.title}</div>
       </div>
       <div className={styles.right_container}>
-        <div className={styles[allert.style]}></div>
+        <div title={allert.style} className={styles[allert.style]}></div>
         <img
           onClick={startAllertEditing}
           className={styles.edit}

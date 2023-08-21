@@ -1,11 +1,10 @@
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 
-const MenuItem = (menuItem: menuItem) => {
+const MenuItem = ({ menuItem }: { menuItem: MenuItem }) => {
   const navigate = useNavigate();
   const onTabChange = () => {
-    navigate(menuItem.link);
+    navigate(menuItem?.link);
   };
   const hrefArray = window.location.href.split("/");
   const activeTab = "/" + hrefArray[hrefArray.length - 1];
@@ -16,7 +15,11 @@ const MenuItem = (menuItem: menuItem) => {
       style={{ backgroundColor: isActive ? "#6AC7BE" : "" }}
       className={styles.container}
     >
-      <div onClick={onTabChange} className={styles.menu_element}>
+      <div
+        onClick={onTabChange}
+        title="menuElement"
+        className={styles.menu_element}
+      >
         <img
           className={isActive ? styles.filtered_svg : styles.svg}
           alt={menuItem.title}

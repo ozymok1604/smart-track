@@ -5,11 +5,11 @@
   flex-direction: column;
   position: fixed;
   justify-content: space-around;
-  width: 11vw;
+  width: 185px;
+  z-index: 1;
   height: 100vh;
   background-color: #212155;
 }
-
 .logo {
   font-size: 30px;
   color: $white;

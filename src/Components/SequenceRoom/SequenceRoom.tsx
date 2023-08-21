@@ -1,9 +1,9 @@
-import styles from "./styles.module.scss";
+import { useDispatch } from "react-redux";
+import { Draggable } from "react-beautiful-dnd";
 import Close from "../../assets/Close.svg";
 import Edit from "../../assets/Edit.svg";
-import { Draggable } from "react-beautiful-dnd";
-import { useDispatch } from "react-redux";
 import { openDeleteModal, openRoomModal } from "../../store";
+import styles from "./styles.module.scss";
 
 const SequenceRoom = ({ room, index }: { room?: Room; index?: any }) => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const SequenceRoom = ({ room, index }: { room?: Room; index?: any }) => {
                 onClick={handleOpenDeleteModal}
                 className={styles.svg}
                 src={Close}
-                alt="Close"
+                alt="Delete"
               />
               <img
                 onClick={handleOpenEditRoomModal}

@@ -4,8 +4,8 @@ import { changeTab, openAddStuffModal } from "../../store";
 import { Table } from "../../Components/Table";
 import { Button } from "../../Components/Button";
 import { AddStuffModal } from "../../layouts/AddStuffModal";
-import styles from "./styles.module.scss";
 import { DeleteModal } from "../../layouts/DeleteModal";
+import styles from "./styles.module.scss";
 
 const Stuff = () => {
   const tabs = ["Doctors", "Assistants", "Receptionists"];
@@ -18,10 +18,6 @@ const Stuff = () => {
 
   const stuffModalParameters = useSelector(
     (state: SmartTrackState) => state.stuffModalParameters
-  );
-
-  const editedEmployee = useSelector(
-    (state: SmartTrackState) => state.editedEmployee
   );
 
   const isOpenDeleteModal = useSelector(

@@ -13,11 +13,7 @@ const Dashboard = () => {
     (state: SmartTrackState) => state.editedEmployee
   );
   const getFilteredDoctors = (employees: Employee[]) => {
-    const newList = employees.filter(
-      (employee: Employee) => employee.type == "Doctors"
-    );
-
-    return newList;
+    return employees.filter((employee: Employee) => employee.type == "Doctors");
   };
 
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");

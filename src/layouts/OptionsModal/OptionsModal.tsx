@@ -1,6 +1,5 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { editEmployee, openWardOptionsModal } from "../../store";
 import Close from "../../assets/Close.svg";
 import styles from "./styles.module.scss";
@@ -19,7 +18,9 @@ const OptionsModal = () => {
     selectedRoom?.options || []
   );
 
-  const settedNames = selectedRoom?.options.map((option: any) => option?.title);
+  const settedNames = selectedRoom?.options?.map(
+    (option: any) => option?.title
+  );
 
   const [selectedOptionsNames, setSelectedOptionsNames] =
     useState<any>(settedNames);
@@ -101,7 +102,7 @@ const OptionsModal = () => {
         <img
           onClick={handleCloseModal}
           className={styles.close}
-          alt="close"
+          alt="Close"
           src={Close}
         />
       </div>

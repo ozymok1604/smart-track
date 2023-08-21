@@ -1,9 +1,6 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { SideBarMenu } from "./layouts/SideBarMenu";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Dashboard } from "./Pages/Dashboard";
 import { Stuff } from "./Pages/Stuff";
@@ -15,10 +12,10 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/stuff" element={<Stuff />} />
-          <Route path="/allerts" element={<Allerts />} />
-          <Route path="/sequence" element={<Sequence />} />
+          <Route key="/" path="/" element={<Dashboard />} />
+          <Route key="/stuff" path="/stuff" element={<Stuff />} />
+          <Route key="/allerts" path="/allerts" element={<Allerts />} />
+          <Route key="/sequence" path="/sequence" element={<Sequence />} />
         </Routes>
       </BrowserRouter>
     </Provider>

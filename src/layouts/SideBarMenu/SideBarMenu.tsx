@@ -1,4 +1,4 @@
-import { MenuItem } from "../../Components/MenuElement/MenuElement";
+import { MenuItem } from "../../Components/MenuItem";
 import Allerts from "../../assets/Allerts.svg";
 import Dashboard from "../../assets/Dashboard.svg";
 import Sequence from "../../assets/Sequence.svg";
@@ -19,7 +19,7 @@ const SideBarMenu = () => {
       <div className={styles.logo}>Logo</div>
       <div className={styles.menu}>
         {menuList.map((item) => {
-          return <MenuItem {...item} />;
+          return <MenuItem key={item.title} menuItem={item} />;
         })}
       </div>
       <Button title="Sign Out" type="signOut" />

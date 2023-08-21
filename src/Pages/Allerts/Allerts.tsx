@@ -1,11 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AllertOption } from "../../Components/AllertOption";
 import { Button } from "../../Components/Button";
 import { SideBarMenu } from "../../layouts/SideBarMenu";
-import styles from "./styles.module.scss";
 import { openAllertModal } from "../../store";
 import { AllertModal } from "../../layouts/AllertModal";
-import { useSelector } from "react-redux";
+import styles from "./styles.module.scss";
 
 const options = [
   { id: "1", title: "Assistant In", style: "assistantIn" },

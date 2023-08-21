@@ -2,10 +2,16 @@
   "name": "smart-track",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "lines": 80
+      }
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.39",
     "@types/react": "^18.2.18",
@@ -22,7 +28,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/user-event": "^14.4.3",
     "@types/react-beautiful-dnd": "^13.1.4",
     "@types/react-redux": "^7.1.25",
     "@types/redux": "^3.6.0",

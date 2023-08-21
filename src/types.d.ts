@@ -24,6 +24,12 @@ type DoctorRow = {
   rooms?: Room[];
 };
 
+type MenuItem = {
+  title?: string;
+  img?: any;
+  link?: any;
+};
+
 type Employee = {
   stopped?: boolean;
   countInLine?: number;

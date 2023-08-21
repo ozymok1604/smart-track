@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import Close from "../../assets/Close.svg";
 import { stopShowingAllert } from "../../store";
+import Close from "../../assets/Close.svg";
 import styles from "./styles.module.scss";
 
 const Message = () => {
@@ -18,7 +18,7 @@ const Message = () => {
           <img
             onClick={handleCloseAllert}
             className={styles.close}
-            alt="close"
+            alt="Close"
             src={Close}
           />
         </div>

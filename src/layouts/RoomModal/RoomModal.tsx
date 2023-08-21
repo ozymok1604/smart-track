@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRoom, openRoomModal, editRoom } from "../../store";
 import { Button } from "../../Components/Button";
 import Close from "../../assets/Close.svg";
 import { Field } from "../../Components/Field";
-import { useState } from "react";
 import { getRandomNumber } from "../../utils/getRandomNumber";
 import styles from "./styles.module.scss";
 
@@ -52,7 +52,7 @@ const RoomModal = ({ type }: { type?: string }) => {
           <img
             onClick={handleCloseModal}
             className={styles.close}
-            alt="close"
+            alt="Close"
             src={Close}
           />
         </div>

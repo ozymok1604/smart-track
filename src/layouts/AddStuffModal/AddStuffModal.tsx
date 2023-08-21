@@ -34,7 +34,7 @@ const AddStuffModal = ({ employeeType }: { employeeType?: string }) => {
     id: isEdit ? employeeData?.id : getRandomNumber(1000),
     countInLine: isEdit ? employeeData?.countInLine : 0,
     stopped: isEdit ? employeeData?.stopped : false,
-    type: employeeType || employeeData.type,
+    type: employeeType || employeeData.type || "Doctors",
     name: isEdit ? employeeData?.name : "",
     email: isEdit ? employeeData?.email : "",
     rooms: employeeData?.rooms,
@@ -112,7 +112,7 @@ const AddStuffModal = ({ employeeType }: { employeeType?: string }) => {
           <img
             onClick={handleCloseModal}
             className={styles.close}
-            alt="close"
+            alt="Close"
             src={Close}
           />
         </div>
@@ -183,6 +183,7 @@ const AddStuffModal = ({ employeeType }: { employeeType?: string }) => {
               <div className={styles.additional_allerts_container}>
                 {additionalAllerts.map((additionalAllert: any) => (
                   <div
+                    title={additionalAllert.value}
                     onClick={() => handleAddAllert(additionalAllert?.value)}
                     className={styles.additional_allert}
                     style={{

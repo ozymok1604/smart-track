@@ -35,17 +35,17 @@ const DeleteModal = ({ type }: { type?: string }) => {
           <img
             onClick={handleCloseModal}
             className={styles.close}
-            alt="close"
+            alt="Close"
             src={Close}
           />
         </div>
         <div className={styles.header}>
-          <div className={styles.header_title}>
+          <div title="header" className={styles.header_title}>
             Delete {type == "stuff" ? tab?.slice(0, -1) : "room"}
           </div>
         </div>
 
-        <div className={styles.title}>
+        <div title="text" className={styles.title}>
           Are you sure you want to delete this
           {type == "stuff" ? tab?.slice(0, -1) : " room"}?
         </div>

@@ -31,13 +31,17 @@ const DoctorRow = ({ row, index }: { row: DoctorRow; index: number }) => {
 
       <div className={styles.allerts_container}>
         {row?.allerts?.map((allert: string) => {
-          return <div className={styles[allert]}></div>;
+          return (
+            <div title={allert} key={allert} className={styles[allert]}></div>
+          );
         })}
       </div>
       <div>
         <span>Rooms </span>
         {row?.rooms?.map((room: Room) => (
-          <span className={styles.room}>{room?.name}</span>
+          <span key={room.id} className={styles.room}>
+            {room?.name}
+          </span>
         ))}
       </div>
       <div className={styles.actions}>

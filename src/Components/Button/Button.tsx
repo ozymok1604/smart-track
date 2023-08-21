@@ -7,10 +7,18 @@ import ActiveOut from "../../assets/ActiveSignOut.svg";
 import styles from "./styles.module.scss";
 
 const Button = ({
+  onMouseDown,
+  onMouseUp,
+  onMouseOver,
+  onMouseOut,
   onClick,
   title,
   type,
 }: {
+  onMouseDown?: any;
+  onMouseUp?: any;
+  onMouseOver?: any;
+  onMouseOut?: any;
   onClick?: any;
   title: string;
   type: string;
@@ -19,19 +27,19 @@ const Button = ({
   const [isActive, setActive] = useState(false);
 
   return (
-    <div onClick={onClick}>
+    <div
+      onClick={onClick}
+      onMouseOver={onMouseOver ? onMouseOver : () => setHover(true)}
+      onMouseOut={onMouseOut ? onMouseOut : () => setHover(false)}
+      onMouseDown={onMouseDown ? onMouseDown : () => setActive(true)}
+      onMouseUp={onMouseUp ? onMouseUp : () => setActive(false)}
+    >
       {type == "primary" ? (
         <button onClick={onClick} className={styles.primary}>
           {title}
         </button>
       ) : type == "add" ? (
-        <div
-          onMouseOver={() => setHover(true)}
-          onMouseOut={() => setHover(false)}
-          onMouseDown={() => setActive(true)}
-          onMouseUp={() => setActive(false)}
-          className={styles.add_container}
-        >
+        <div className={styles.add_container}>
           <img
             className={styles.svg}
             alt="add"
@@ -40,13 +48,7 @@ const Button = ({
           <div className={styles.add}>{title}</div>
         </div>
       ) : type == "addRoom" ? (
-        <div
-          onMouseOver={() => setHover(true)}
-          onMouseOut={() => setHover(false)}
-          onMouseDown={() => setActive(true)}
-          onMouseUp={() => setActive(false)}
-          className={styles.add_room_container}
-        >
+        <div className={styles.add_room_container}>
           <img
             className={styles.svg}
             alt="add"
