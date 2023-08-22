@@ -12,11 +12,10 @@ const Dashboard = () => {
   const editedDoctor = useSelector(
     (state: SmartTrackState) => state.editedEmployee
   );
+  const employees = JSON.parse(localStorage.getItem("employees") || "[]");
   const getFilteredDoctors = (employees: Employee[]) => {
     return employees.filter((employee: Employee) => employee.type == "Doctors");
   };
-
-  const employees = JSON.parse(localStorage.getItem("employees") || "[]");
 
   const [doctors, setDoctors] = useState<any[]>(getFilteredDoctors(employees));
 

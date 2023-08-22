@@ -3,13 +3,15 @@ import { useState } from "react";
 import { editEmployee, openWardOptionsModal } from "../../store";
 import Close from "../../assets/Close.svg";
 import styles from "./styles.module.scss";
-const OptionsModal = () => {
+const OptionsModal = ({ testAllerts }: { testAllerts?: any[] }) => {
   const dispatch = useDispatch();
   const selectedRoom = useSelector((state: SmartTrackState) => state.room);
   const selectedDoctor = useSelector(
     (state: SmartTrackState) => state.employeeData
   );
-  const allerts = JSON.parse(localStorage.getItem("allerts") || "[]");
+  const allerts = JSON.parse(
+    localStorage.getItem("allerts") || JSON.stringify(testAllerts)
+  );
 
   const leftColumn = allerts.slice(0, allerts.length / 2);
   const rightColumn = allerts.slice(allerts.length / 2);
@@ -26,13 +28,13 @@ const OptionsModal = () => {
     useState<any>(settedNames);
 
   const handleChangeSelectedOptions = (selectedOption: any) => {
-    const filteredOptions = selectedOptions.filter(
-      (option: any) => option.id != selectedOption.id
+    const filteredOptions = selectedOptions?.filter(
+      (option: any) => option?.id != selectedOption?.id
     );
-    const filteredOptionsNames = selectedOptionsNames.filter(
-      (title: any) => title != selectedOption.title
+    const filteredOptionsNames = selectedOptionsNames?.filter(
+      (title: any) => title != selectedOption?.title
     );
-    if (selectedOptionsNames.includes(selectedOption.title)) {
+    if (selectedOptionsNames?.includes(selectedOption?.title)) {
       setSelectedOptions([...filteredOptions]);
       setSelectedOptionsNames([...filteredOptionsNames]);
     } else {
@@ -67,13 +69,13 @@ const OptionsModal = () => {
           {leftColumn?.map((item: Option) => {
             return (
               <div
-                style={{
-                  backgroundColor: selectedOptionsNames.includes(item.title)
-                    ? "#6AC7BE66"
-                    : "",
-                }}
+                title={item.title}
                 onClick={() => handleChangeSelectedOptions(item)}
-                className={styles.option_container}
+                className={`${styles.option_container}  ${
+                  selectedOptionsNames?.includes(item?.title)
+                    ? styles.selected
+                    : ""
+                }`}
               >
                 <div className={styles[item.style]}>{item.title[0]}</div>
                 <div className={styles.title}>{item.title}</div>
@@ -85,13 +87,13 @@ const OptionsModal = () => {
           {rightColumn?.map((item: Option) => {
             return (
               <div
-                style={{
-                  backgroundColor: selectedOptionsNames.includes(item.title)
-                    ? "#6AC7BE66"
-                    : "",
-                }}
+                title={item.title}
                 onClick={() => handleChangeSelectedOptions(item)}
-                className={styles.option_container}
+                className={`${styles.option_container}  ${
+                  selectedOptionsNames?.includes(item?.title)
+                    ? styles.selected
+                    : ""
+                }`}
               >
                 <div className={styles[item.style]}>{item.title[0]}</div>
                 <div className={styles.title}>{item.title}</div>

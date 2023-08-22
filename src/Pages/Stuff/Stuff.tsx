@@ -7,7 +7,7 @@ import { AddStuffModal } from "../../layouts/AddStuffModal";
 import { DeleteModal } from "../../layouts/DeleteModal";
 import styles from "./styles.module.scss";
 
-const Stuff = () => {
+const Stuff = ({ testData }: { testData?: any[] }) => {
   const tabs = ["Doctors", "Assistants", "Receptionists"];
 
   const activeTab = useSelector((state: SmartTrackState) => state.tab);
@@ -25,7 +25,9 @@ const Stuff = () => {
     (state: SmartTrackState) => state.deleteModalParameters.isOpenDeleteModal
   );
 
-  const employees = JSON.parse(localStorage.getItem("employees") || "[]");
+  const employees = JSON.parse(
+    localStorage.getItem("employees") || JSON.stringify(testData)
+  );
 
   const doctors = employees.filter(
     (employee: Doctor) => employee.type == "Doctors"
@@ -55,13 +57,10 @@ const Stuff = () => {
             {tabs.map((tab) => {
               return (
                 <div
-                  style={{
-                    borderBottom:
-                      activeTab === tab ? "1px solid #6ac7be" : "none",
-                    color: activeTab === tab ? "#6ac7be" : "inherit",
-                  }}
                   onClick={() => handleTabChange(tab)}
-                  className={styles.navigationItem}
+                  className={`${styles.navigationItem} ${
+                    activeTab === tab ? styles.selected : ""
+                  }`}
                 >
                   {tab}
                 </div>

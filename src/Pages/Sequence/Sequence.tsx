@@ -19,7 +19,13 @@ import { getFilteredListNames } from "../../utils/getFilteredListNames";
 import { Message } from "../../layouts/Message";
 import styles from "./styles.module.scss";
 
-const Sequence = () => {
+const Sequence = ({
+  testEmployees,
+  testRooms,
+}: {
+  testEmployees?: Doctor[];
+  testRooms?: any[];
+}) => {
   const dispatch = useDispatch();
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
   const room = useSelector((state: SmartTrackState) => state.room);
@@ -33,7 +39,9 @@ const Sequence = () => {
   const roomModalType = useSelector(
     (state: SmartTrackState) => state.roomModalParameters.type
   );
-  const rooms = JSON.parse(localStorage.getItem("rooms") || "[]");
+  const rooms = JSON.parse(
+    localStorage.getItem("rooms") || JSON.stringify(testRooms)
+  );
 
   const roomColumns = {
     allRooms: {
@@ -220,7 +228,7 @@ const Sequence = () => {
           <div className={styles.header}>
             <div className={styles.select_container}>
               <div className={styles.title}>Choose a Doctor</div>
-              <Select doctors={doctors} />
+              <Select doctors={testEmployees || doctors} />
             </div>
             <Button
               onClick={handleSaveDoctorRooms}
@@ -241,7 +249,7 @@ const Sequence = () => {
                   {...provided.droppableProps}
                 >
                   {!hasRooms && (
-                    <div className={styles.text}>
+                    <div title="doctorRooms" className={styles.text}>
                       Drag and Drop rooms to the box
                     </div>
                   )}

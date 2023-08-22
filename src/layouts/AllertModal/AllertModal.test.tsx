@@ -32,11 +32,7 @@ test("Add Allert Modal renders correctly", () => {
     expect(allertElement).toBeInTheDocument();
     expect(allertElement).toHaveClass(allert);
     fireEvent.click(allertElement);
-    expect(allertElement).toHaveStyle({
-      border: "solid 4px",
-      height: "60px",
-      width: "60px",
-    });
+    expect(allertElement).toHaveClass("ordered");
   });
 
   const closeButton = screen.getByAltText("Close");
@@ -81,11 +77,7 @@ test("Edit Allert Modal renders correctly", () => {
     expect(allertElement).toBeInTheDocument();
     expect(allertElement).toHaveClass(allert);
     fireEvent.click(allertElement);
-    expect(allertElement).toHaveStyle({
-      border: "solid 4px",
-      height: "60px",
-      width: "60px",
-    });
+    expect(allertElement).toHaveClass("ordered");
   });
 
   const closeButton = screen.getByAltText("Close");

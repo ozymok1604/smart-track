@@ -60,6 +60,13 @@
   width: 47%;
   border-right: 1px solid $light-asphalt;
 }
+
+.selected {
+  background-color: #6ac7be66;
+}
+.selected:hover {
+  background-color: #6ac7be66;
+}
 .assistantIn {
   display: flex;
   width: 65px;
