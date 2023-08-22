@@ -8,10 +8,10 @@ import styles from "./styles.module.scss";
 
 const SideBarMenu = () => {
   const menuList = [
-    { title: "Dashboard", img: Dashboard, link: "/" },
-    { title: "Stuff", img: Stuff, link: "/stuff" },
-    { title: "Allerts", img: Allerts, link: "/allerts" },
-    { title: "Sequence", img: Sequence, link: "/sequence" },
+    { title: "Dashboard", img: Dashboard, link: "/smart/" },
+    { title: "Stuff", img: Stuff, link: "/smart/stuff" },
+    { title: "Allerts", img: Allerts, link: "/smart/allerts" },
+    { title: "Sequence", img: Sequence, link: "/smart/sequence" },
   ];
 
   return (

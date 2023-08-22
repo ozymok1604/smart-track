@@ -12,10 +12,14 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route key="/" path="/" element={<Dashboard />} />
-          <Route key="/stuff" path="/stuff" element={<Stuff />} />
-          <Route key="/allerts" path="/allerts" element={<Allerts />} />
-          <Route key="/sequence" path="/sequence" element={<Sequence />} />
+          <Route key="/" path="/smart/" element={<Dashboard />} />
+          <Route key="/stuff" path="/smart/stuff" element={<Stuff />} />
+          <Route key="/allerts" path="/smart/allerts" element={<Allerts />} />
+          <Route
+            key="/sequence"
+            path="/smart/sequence"
+            element={<Sequence />}
+          />
         </Routes>
       </BrowserRouter>
     </Provider>
