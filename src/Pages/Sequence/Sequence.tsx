@@ -40,7 +40,7 @@ const Sequence = ({
     (state: SmartTrackState) => state.roomModalParameters.type
   );
   const rooms = JSON.parse(
-    localStorage.getItem("rooms") || JSON.stringify(testRooms)
+    localStorage.getItem("rooms") || JSON.stringify(testRooms) || "[]"
   );
 
   const roomColumns = {

@@ -26,19 +26,19 @@ const Stuff = ({ testData }: { testData?: any[] }) => {
   );
 
   const employees = JSON.parse(
-    localStorage.getItem("employees") || JSON.stringify(testData)
+    localStorage.getItem("employees") || JSON.stringify(testData) || "[]"
   );
 
-  const doctors = employees.filter(
-    (employee: Doctor) => employee.type == "Doctors"
+  const doctors = employees?.filter(
+    (employee: Doctor) => employee?.type == "Doctors"
   );
 
-  const assistants = employees.filter(
-    (employee: Assistant) => employee.type == "Assistants"
+  const assistants = employees?.filter(
+    (employee: Assistant) => employee?.type == "Assistants"
   );
 
-  const receptionists = employees.filter(
-    (employee: Receptionist) => employee.type == "Receptionists"
+  const receptionists = employees?.filter(
+    (employee: Receptionist) => employee?.type == "Receptionists"
   );
   const handleOpenAddStuffModal = () => {
     dispatch(openAddStuffModal({ type: "add", isOpen: true }));
