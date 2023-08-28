@@ -1,5 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEmployee, deleteRoom, openDeleteModal } from "../../store";
+import {
+  deleteEmployee,
+  deleteRoom,
+  getEmployeeData,
+  openDeleteModal,
+} from "../../store";
 import { Button } from "../../Components/Button";
 import Close from "../../assets/Close.svg";
 import styles from "./styles.module.scss";
@@ -24,6 +29,7 @@ const DeleteModal = ({ type }: { type?: string }) => {
       : dispatch(deleteRoom(roomId));
 
     dispatch(openDeleteModal({ isOpenDeleteModal: false }));
+    dispatch(getEmployeeData({}));
   };
   return (
     <div onClick={handleCloseModal} className={styles.modal}>

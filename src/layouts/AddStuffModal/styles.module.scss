@@ -29,6 +29,15 @@
   background-color: $white;
   box-shadow: 0px 4px 20px 0px #202b5d1f;
 }
+@media (max-width: 420px) {
+  .modal {
+    width: 100vw;
+    padding-left: 10vw;
+  }
+  .modal_content {
+    width: 80vw;
+  }
+}
 
 .close:hover {
   cursor: pointer;

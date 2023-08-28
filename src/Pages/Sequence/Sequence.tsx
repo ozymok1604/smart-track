@@ -234,12 +234,14 @@ const Sequence = ({
         {isOpenMenu || window.screen.width >= 420 ? (
           <SideBarMenu />
         ) : (
-          <img
-            onClick={handleOpenMenu}
-            className={styles.menu_icon}
-            alt="Menu"
-            src={Menu}
-          />
+          <div className={styles.menu_icon_container}>
+            <img
+              onClick={handleOpenMenu}
+              className={styles.menu_icon}
+              alt="Menu"
+              src={Menu}
+            />
+          </div>
         )}
 
         <div className={styles.page_content}>

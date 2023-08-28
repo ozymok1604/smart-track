@@ -18,8 +18,14 @@
 @media (max-width: 420px) {
   .page_content {
     height: 100vh;
-    padding-left: 20px;
+    width: 115vw;
     margin-left: -38px;
+    padding-left: 50px;
+    padding-bottom: 20vh;
+  }
+  .page {
+    width: 100vw;
+    height: 100vh;
   }
 }
 
@@ -75,8 +81,16 @@
 }
 
 .menu_icon {
-  width: 20px;
-  height: 20px;
+  display: block;
+
   padding-left: 20px;
+  padding-right: 20px;
   padding-top: 20px;
+}
+
+.menu_icon_container {
+  background-color: $light-grey;
+  display: flex;
+  width: 100%;
+  padding-right: 126px;
 }
