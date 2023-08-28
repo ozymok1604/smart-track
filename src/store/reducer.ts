@@ -25,6 +25,7 @@ const initialState: SmartTrackState = {
   allertData: {},
   allert: {},
   editedAllert: {},
+  isOpenMenu: false,
 };
 
 const reducer = (
@@ -51,6 +52,11 @@ const reducer = (
         ...state,
         count: action.count,
       };
+    case actionTypes.SET_OPEN_MENU:
+      return {
+        ...state,
+        isOpenMenu: action.isOpenMenu,
+      };
     case actionTypes.OPEN_ADD_STUFF_MODAL:
       return {
         ...state,
@@ -74,7 +80,7 @@ const reducer = (
       };
     case actionTypes.EDIT_EMPLOYEE:
       const indexEditedEmployee = employees.findIndex((employee: Employee) => {
-        return employee.id == action.editedEmployee.id;
+        return employee.id === action.editedEmployee.id;
       });
 
       employees[indexEditedEmployee] = action.editedEmployee;
@@ -92,7 +98,7 @@ const reducer = (
       };
     case actionTypes.DELETE_EMPLOYEE:
       const newList = employees.filter(
-        (item: Employee) => item.id != action.employeeId
+        (item: Employee) => item.id !== action.employeeId
       );
       window.localStorage.setItem("employees", JSON.stringify(newList));
       return {
@@ -115,7 +121,7 @@ const reducer = (
       };
     case actionTypes.DELETE_ROOM:
       const newDeletedRoomsList = rooms.filter(
-        (room: Room) => room.id != action.roomId
+        (room: Room) => room.id !== action.roomId
       );
       window.localStorage.setItem("rooms", JSON.stringify(newDeletedRoomsList));
 
@@ -126,7 +132,7 @@ const reducer = (
 
     case actionTypes.EDIT_ROOM:
       const indexEditedRoom = rooms.findIndex((room: Room) => {
-        return room.id == state.editedRoom.id;
+        return room.id === state.editedRoom.id;
       });
 
       rooms[indexEditedRoom] = action.editedRoom;
@@ -146,7 +152,7 @@ const reducer = (
     case actionTypes.RENAME_ROOMS:
       rooms?.map((room: Room) => {
         action.selectedRooms?.map((selectedRoom: Room) => {
-          if (selectedRoom.id == room.id) {
+          if (selectedRoom.id === room.id) {
             const index = rooms.indexOf(room);
             rooms[index] = selectedRoom;
           }
@@ -194,7 +200,7 @@ const reducer = (
       };
     case actionTypes.EDIT_ALLERT:
       const indexEditedAllert = allerts.findIndex((allert: AllertData) => {
-        return allert?.id == state.allertData?.id;
+        return allert?.id === state.allertData?.id;
       });
 
       allerts[indexEditedAllert] = action.editedAllert;

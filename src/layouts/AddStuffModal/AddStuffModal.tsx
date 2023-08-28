@@ -25,7 +25,7 @@ const AddStuffModal = ({ employeeType }: { employeeType?: string }) => {
 
   const dispatch = useDispatch();
 
-  const isEdit = stuffModalParameters.type == "edit";
+  const isEdit = stuffModalParameters.type === "edit";
 
   const [addedAllerts, setAddedAllerts] = useState<any[]>(
     (isEdit && employeeData.allerts) || []
@@ -78,7 +78,7 @@ const AddStuffModal = ({ employeeType }: { employeeType?: string }) => {
 
   const handleAddAllert = (allert: string) => {
     const filteredAllerts = addedAllerts.filter(
-      (addedAllert) => addedAllert != allert
+      (addedAllert) => addedAllert !== allert
     );
 
     if (addedAllerts.includes(allert)) {
@@ -89,7 +89,7 @@ const AddStuffModal = ({ employeeType }: { employeeType?: string }) => {
   };
 
   const handleSaveForm = () => {
-    stuffModalParameters.type == "add"
+    stuffModalParameters.type === "add"
       ? dispatch(addNewEmployee(stuffData))
       : dispatch(editEmployee(stuffData));
     handleCloseModal();
@@ -143,7 +143,7 @@ const AddStuffModal = ({ employeeType }: { employeeType?: string }) => {
           title="Phone number"
         />
 
-        {stuffData.type == "Doctors" && (
+        {stuffData.type === "Doctors" && (
           <>
             <div className={styles.title}>Allerts</div>
             <div className={styles.allerts_line}>

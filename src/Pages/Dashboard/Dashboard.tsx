@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setOpenMenu } from "../../store";
 import { DoctorLine } from "../../Components/DoctorLine";
 import { OptionsModal } from "../../layouts/OptionsModal";
 import { SideBarMenu } from "../../layouts/SideBarMenu";
+import Menu from "../../assets/Menu.svg";
 import styles from "./styles.module.scss";
 
 const Dashboard = () => {
@@ -14,10 +16,17 @@ const Dashboard = () => {
   );
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
   const getFilteredDoctors = (employees: Employee[]) => {
-    return employees.filter((employee: Employee) => employee.type == "Doctors");
+    return employees.filter(
+      (employee: Employee) => employee.type === "Doctors"
+    );
   };
+  const isOpenMenu = useSelector((state: SmartTrackState) => state.isOpenMenu);
 
   const [doctors, setDoctors] = useState<any[]>(getFilteredDoctors(employees));
+  const dispatch = useDispatch();
+  const handleOpenMenu = () => {
+    dispatch(setOpenMenu(true));
+  };
 
   useEffect(() => {
     setDoctors(getFilteredDoctors(employees));
@@ -25,7 +34,16 @@ const Dashboard = () => {
 
   return (
     <div className={styles.page}>
-      <SideBarMenu />
+      {isOpenMenu || window.screen.width >= 420 ? (
+        <SideBarMenu />
+      ) : (
+        <img
+          onClick={handleOpenMenu}
+          className={styles.menu_icon}
+          alt="Menu"
+          src={Menu}
+        />
+      )}
       {isOpen && <OptionsModal />}
 
       <div className={styles.page_content}>

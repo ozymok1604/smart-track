@@ -29,10 +29,10 @@ const OptionsModal = ({ testAllerts }: { testAllerts?: any[] }) => {
 
   const handleChangeSelectedOptions = (selectedOption: any) => {
     const filteredOptions = selectedOptions?.filter(
-      (option: any) => option?.id != selectedOption?.id
+      (option: any) => option?.id !== selectedOption?.id
     );
     const filteredOptionsNames = selectedOptionsNames?.filter(
-      (title: any) => title != selectedOption?.title
+      (title: any) => title !== selectedOption?.title
     );
     if (selectedOptionsNames?.includes(selectedOption?.title)) {
       setSelectedOptions([...filteredOptions]);
@@ -46,7 +46,7 @@ const OptionsModal = ({ testAllerts }: { testAllerts?: any[] }) => {
   const handleCloseModal = () => {
     dispatch(openWardOptionsModal(false));
     const newRooms = selectedDoctor?.rooms?.map((room: any) => {
-      if (room.id == selectedRoom.id) {
+      if (room.id === selectedRoom.id) {
         return {
           id: selectedRoom.id,
           name: selectedRoom.name,

@@ -121,6 +121,13 @@ export const stopShowingAllert = (isShowingAllert?: boolean) => {
   };
 };
 
+export const setOpenMenu = (isOpenMenu?: boolean) => {
+  return {
+    type: actionTypes.SET_OPEN_MENU,
+    isOpenMenu,
+  };
+};
+
 export const openAllertModal = (
   allertModalParameters?: AllertModalParameters
 ) => {

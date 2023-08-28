@@ -27,9 +27,9 @@ const AllertModal = ({ actionType }: { actionType?: any }) => {
     "allert6",
   ];
   const id = getRandomNumber(100);
-  const [name, setName] = useState(type == "edit" ? allertData?.title : "");
+  const [name, setName] = useState(type === "edit" ? allertData?.title : "");
   const [orderedStyle, setOrderedStyle] = useState(
-    type == "edit" ? allertData?.style : ""
+    type === "edit" ? allertData?.style : ""
   );
 
   const handleChangeName = (e: any) => {
@@ -37,7 +37,7 @@ const AllertModal = ({ actionType }: { actionType?: any }) => {
   };
 
   const onSaveClick = () => {
-    type == "add"
+    type === "add"
       ? dispatch(
           addAllert({ id: id.toString(), title: name, style: orderedStyle })
         )
@@ -64,7 +64,7 @@ const AllertModal = ({ actionType }: { actionType?: any }) => {
         </div>
         <div className={styles.content_wrapper}>
           <div className={styles.header_title}>
-            {type == "edit" ? allertData?.title : "Add New"}
+            {type === "edit" ? allertData?.title : "Add New"}
           </div>
           <Field
             onChange={handleChangeName}

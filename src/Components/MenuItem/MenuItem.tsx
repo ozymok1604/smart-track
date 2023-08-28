@@ -9,7 +9,7 @@ const MenuItem = ({ menuItem }: { menuItem: MenuItem }) => {
   const hrefArray = window.location.href.split("/");
   const activeTab = "/smart/" + hrefArray[hrefArray.length - 1];
   console.log(activeTab);
-  const isActive = activeTab == menuItem.link;
+  const isActive = activeTab === menuItem.link;
 
   return (
     <div

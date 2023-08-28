@@ -19,7 +19,7 @@ const DeleteModal = ({ type }: { type?: string }) => {
   };
 
   const handleDeleteEmployee = () => {
-    type == "stuff"
+    type === "stuff"
       ? dispatch(deleteEmployee(employeeData?.id))
       : dispatch(deleteRoom(roomId));
 
@@ -41,13 +41,13 @@ const DeleteModal = ({ type }: { type?: string }) => {
         </div>
         <div className={styles.header}>
           <div title="header" className={styles.header_title}>
-            Delete {type == "stuff" ? tab?.slice(0, -1) : "room"}
+            Delete {type === "stuff" ? tab?.slice(0, -1) : "room"}
           </div>
         </div>
 
         <div title="text" className={styles.title}>
           Are you sure you want to delete this
-          {type == "stuff" ? tab?.slice(0, -1) : " room"}?
+          {type === "stuff" ? tab?.slice(0, -1) : " room"}?
         </div>
 
         <div className={styles.footer}>

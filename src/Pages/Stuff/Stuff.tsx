@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { SideBarMenu } from "../../layouts/SideBarMenu";
-import { changeTab, openAddStuffModal } from "../../store";
+import { changeTab, openAddStuffModal, setOpenMenu } from "../../store";
 import { Table } from "../../Components/Table";
 import { Button } from "../../Components/Button";
 import { AddStuffModal } from "../../layouts/AddStuffModal";
 import { DeleteModal } from "../../layouts/DeleteModal";
+import Menu from "../../assets/Menu.svg";
 import styles from "./styles.module.scss";
 
 const Stuff = ({ testData }: { testData?: any[] }) => {
@@ -12,9 +13,14 @@ const Stuff = ({ testData }: { testData?: any[] }) => {
 
   const activeTab = useSelector((state: SmartTrackState) => state.tab);
 
+  const isOpenMenu = useSelector((state: SmartTrackState) => state.isOpenMenu);
+
   const dispatch = useDispatch();
   const handleTabChange = (tab: string) => {
     dispatch(changeTab(tab));
+  };
+  const handleOpenMenu = () => {
+    dispatch(setOpenMenu(true));
   };
 
   const stuffModalParameters = useSelector(
@@ -30,22 +36,31 @@ const Stuff = ({ testData }: { testData?: any[] }) => {
   );
 
   const doctors = employees?.filter(
-    (employee: Doctor) => employee?.type == "Doctors"
+    (employee: Doctor) => employee?.type === "Doctors"
   );
 
   const assistants = employees?.filter(
-    (employee: Assistant) => employee?.type == "Assistants"
+    (employee: Assistant) => employee?.type === "Assistants"
   );
 
   const receptionists = employees?.filter(
-    (employee: Receptionist) => employee?.type == "Receptionists"
+    (employee: Receptionist) => employee?.type === "Receptionists"
   );
   const handleOpenAddStuffModal = () => {
     dispatch(openAddStuffModal({ type: "add", isOpen: true }));
   };
   return (
     <div className={styles.page}>
-      <SideBarMenu />
+      {isOpenMenu || window.screen.width >= 420 ? (
+        <SideBarMenu />
+      ) : (
+        <img
+          onClick={handleOpenMenu}
+          className={styles.menu_icon}
+          alt="Menu"
+          src={Menu}
+        />
+      )}
       {isOpenDeleteModal && <DeleteModal type="stuff" />}
       <div className={styles.page_content}>
         {stuffModalParameters.isOpen && (
@@ -75,9 +90,9 @@ const Stuff = ({ testData }: { testData?: any[] }) => {
             />
           </div>
         </div>
-        {activeTab == "Doctors" ? (
+        {activeTab === "Doctors" ? (
           <Table rowType="doctor" rows={doctors} />
-        ) : activeTab == "Assistants" ? (
+        ) : activeTab === "Assistants" ? (
           <Table rowType="assistant" rows={assistants} />
         ) : (
           <Table rowType="receptionist" rows={receptionists} />

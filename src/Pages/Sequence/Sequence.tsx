@@ -10,6 +10,7 @@ import {
   editEmployee,
   openRoomModal,
   renameRooms,
+  setOpenMenu,
   startShowingAllert,
   stopShowingAllert,
 } from "../../store";
@@ -17,6 +18,7 @@ import { DeleteModal } from "../../layouts/DeleteModal";
 import { getRandomNumber } from "../../utils/getRandomNumber";
 import { getFilteredListNames } from "../../utils/getFilteredListNames";
 import { Message } from "../../layouts/Message";
+import Menu from "../../assets/Menu.svg";
 import styles from "./styles.module.scss";
 
 const Sequence = ({
@@ -33,6 +35,9 @@ const Sequence = ({
   const selectedDoctor = useSelector(
     (state: SmartTrackState) => state?.selectedDoctor
   );
+
+  const isOpenMenu = useSelector((state: SmartTrackState) => state.isOpenMenu);
+
   const isShowingAllert = useSelector(
     (state: SmartTrackState) => state.isShowingAllert
   );
@@ -42,6 +47,10 @@ const Sequence = ({
   const rooms = JSON.parse(
     localStorage.getItem("rooms") || JSON.stringify(testRooms) || "[]"
   );
+
+  const handleOpenMenu = () => {
+    dispatch(setOpenMenu(true));
+  };
 
   const roomColumns = {
     allRooms: {
@@ -53,7 +62,7 @@ const Sequence = ({
   };
 
   const doctors = employees.filter(
-    (employee: Doctor) => employee.type == "Doctors"
+    (employee: Doctor) => employee.type === "Doctors"
   );
 
   const isOpenRoomModal = useSelector(
@@ -95,8 +104,8 @@ const Sequence = ({
     const destItems = [...destColumn.rooms];
 
     if (
-      selectedDoctor?.stopped == true ||
-      selectedDoctor?.countInLine == 0 ||
+      selectedDoctor?.stopped === true ||
+      selectedDoctor?.countInLine === 0 ||
       !selectedDoctor?.name
     ) {
       return;
@@ -104,7 +113,7 @@ const Sequence = ({
       if (
         selectedDoctor?.countInLine &&
         destItems.length + 1 > selectedDoctor?.countInLine &&
-        result.destination.droppableId == "doctorRooms"
+        result.destination.droppableId === "doctorRooms"
       ) {
         return;
       } else {
@@ -146,12 +155,12 @@ const Sequence = ({
 
   const handleSaveDoctorRooms = () => {
     doctors.map((doctor: Doctor) => {
-      if (doctor.id != selectedDoctor?.id) {
+      if (doctor.id !== selectedDoctor?.id) {
         const otherDoctorRooms: Room[] = doctor?.rooms as Room[];
         const doctorRooms = [] as Room[];
         otherDoctorRooms?.map((room: Room) => {
           const notSame = !newDoctorRooms.some(
-            (newRoom: Room) => newRoom.name == room.name
+            (newRoom: Room) => newRoom.name === room.name
           );
           notSame && doctorRooms.push(room);
         });
@@ -187,7 +196,7 @@ const Sequence = ({
     );
     const refreshedRooms = JSON.parse(localStorage.getItem("rooms") || "[]");
     const refreshedDoctors = refreshedEmployees.filter(
-      (employee: Doctor) => employee.type == "Doctors"
+      (employee: Doctor) => employee.type === "Doctors"
     );
     const allSettedRooms = refreshedDoctors?.map(
       (doctor: Doctor) => doctor.rooms
@@ -196,7 +205,7 @@ const Sequence = ({
     const roomsToRename: Room[] = [];
     refreshedRooms.map((room: Room) => {
       const notExist = mergedAllSettedRooms.some(
-        (settledRoom: Room) => settledRoom.name == room.name
+        (settledRoom: Room) => settledRoom.name === room.name
       );
       !notExist && roomsToRename.push(room);
     });
@@ -222,7 +231,16 @@ const Sequence = ({
         {isOpenRoomModal && <RoomModal type={roomModalType} />}
         {isOpenDeleteModal && <DeleteModal type="room" />}
         {isShowingAllert && <Message />}
-        <SideBarMenu />
+        {isOpenMenu || window.screen.width >= 420 ? (
+          <SideBarMenu />
+        ) : (
+          <img
+            onClick={handleOpenMenu}
+            className={styles.menu_icon}
+            alt="Menu"
+            src={Menu}
+          />
+        )}
 
         <div className={styles.page_content}>
           <div className={styles.header}>
@@ -250,9 +268,10 @@ const Sequence = ({
                 >
                   {!hasRooms && (
                     <div title="doctorRooms" className={styles.text}>
-                      Drag and Drop rooms to the box
+                      Drag and drop rooms to the box
                     </div>
                   )}
+
                   {columns["doctorRooms"]?.rooms?.map(
                     (room: any, index: any) => (
                       <SequenceRoom room={room} index={index} />
@@ -277,7 +296,7 @@ const Sequence = ({
                       type="addRoom"
                       title="Add a Room"
                     />
-                    {provided.placeholder}
+
                     {columns["allRooms"]?.rooms?.map(
                       (room: Room, index: string) => (
                         <SequenceRoom room={room} index={index} />

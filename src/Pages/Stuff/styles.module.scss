@@ -20,6 +20,13 @@
   margin-left: 180px;
 }
 
+@media (max-width: 420px) {
+  .page_content {
+    padding: 0px;
+    margin-left: -75px;
+  }
+}
+
 .navigation {
   display: flex;
   flex-direction: row;
@@ -53,4 +60,12 @@
 .selected {
   border-bottom: 1px solid #6ac7be;
   color: #6ac7be;
+}
+
+.menu_icon {
+  z-index: 5;
+  width: 20px;
+  height: 20px;
+  padding-left: 20px;
+  padding-top: 20px;
 }

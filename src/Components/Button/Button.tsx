@@ -34,11 +34,11 @@ const Button = ({
       onMouseDown={onMouseDown ? onMouseDown : () => setActive(true)}
       onMouseUp={onMouseUp ? onMouseUp : () => setActive(false)}
     >
-      {type == "primary" ? (
+      {type === "primary" ? (
         <button onClick={onClick} className={styles.primary}>
           {title}
         </button>
-      ) : type == "add" ? (
+      ) : type === "add" ? (
         <div className={styles.add_container}>
           <img
             className={styles.svg}
@@ -47,7 +47,7 @@ const Button = ({
           />
           <div className={styles.add}>{title}</div>
         </div>
-      ) : type == "addRoom" ? (
+      ) : type === "addRoom" ? (
         <div className={styles.add_room_container}>
           <img
             className={styles.svg}
@@ -56,13 +56,13 @@ const Button = ({
           />
           <div className={styles.add_room}>{title}</div>
         </div>
-      ) : type == "secondary" ? (
+      ) : type === "secondary" ? (
         <button className={styles.secondary}>{title}</button>
-      ) : type == "reset" ? (
+      ) : type === "reset" ? (
         <button className={styles.reset}>{title}</button>
-      ) : type == "stop" ? (
+      ) : type === "stop" ? (
         <button className={styles.stop}>{title}</button>
-      ) : type == "signOut" ? (
+      ) : type === "signOut" ? (
         <div
           onMouseDown={() => setActive(true)}
           onMouseUp={() => setActive(false)}
@@ -71,7 +71,7 @@ const Button = ({
           <img alt="out" src={isActive ? ActiveOut : Out} />
           <div className={styles.sign_out}>{title}</div>
         </div>
-      ) : type == "connect" ? (
+      ) : type === "connect" ? (
         <button className={styles.connect}>{title}</button>
       ) : (
         <button className={styles.small}>{title}</button>

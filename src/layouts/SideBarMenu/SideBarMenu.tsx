@@ -3,8 +3,12 @@ import Allerts from "../../assets/Allerts.svg";
 import Dashboard from "../../assets/Dashboard.svg";
 import Sequence from "../../assets/Sequence.svg";
 import Stuff from "../../assets/Stuff.svg";
+import Menu from "../../assets/Menu.svg";
 import { Button } from "../../Components/Button";
 import styles from "./styles.module.scss";
+import { useSelector } from "react-redux";
+import { setOpenMenu } from "../../store";
+import { useDispatch } from "react-redux";
 
 const SideBarMenu = () => {
   const menuList = [
@@ -14,9 +18,25 @@ const SideBarMenu = () => {
     { title: "Sequence", img: Sequence, link: "/smart/sequence" },
   ];
 
+  const dispatch = useDispatch();
+
+  const handleCloseMenu = () => {
+    dispatch(setOpenMenu(false));
+  };
+
   return (
     <div className={styles.left_side_menu}>
+      <div className={styles.menu_icon_container}>
+        <img
+          onClick={handleCloseMenu}
+          className={styles.menu_icon}
+          alt="Menu"
+          src={Menu}
+        />
+      </div>
+
       <div className={styles.logo}>Logo</div>
+
       <div className={styles.menu}>
         {menuList.map((item) => {
           return <MenuItem key={item.title} menuItem={item} />;

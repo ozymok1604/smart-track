@@ -20,3 +20,4 @@ export const GET_ALLERT_DATA = "GET_ALLERT_DATA";
 export const ADD_ALLERT = "ADD_ALLERT";
 export const EDIT_ALLERT = "EDIT_ALLERT";
 export const GET_ROOM_DATA = "GET_ROOM_DATA";
+export const SET_OPEN_MENU = "SET_OPEN_MENU";

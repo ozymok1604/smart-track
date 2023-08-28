@@ -2,8 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { AllertOption } from "../../Components/AllertOption";
 import { Button } from "../../Components/Button";
 import { SideBarMenu } from "../../layouts/SideBarMenu";
-import { openAllertModal } from "../../store";
+import { openAllertModal, setOpenMenu } from "../../store";
 import { AllertModal } from "../../layouts/AllertModal";
+import Menu from "../../assets/Menu.svg";
 import styles from "./styles.module.scss";
 
 const options = [
@@ -22,6 +23,10 @@ const Allerts = () => {
   const isOpenAllertModal = useSelector(
     (state: SmartTrackState) => state.allertModalParameters?.isOpen
   );
+
+  const isOpenMenu = useSelector((state: SmartTrackState) => state.isOpenMenu);
+
+  console.log(isOpenMenu);
   const dispatch = useDispatch();
   const allerts = JSON.parse(
     localStorage.getItem("allerts") || JSON.stringify(options)
@@ -33,10 +38,23 @@ const Allerts = () => {
   const handleOpenAllertModal = () => {
     dispatch(openAllertModal({ type: "add", isOpen: true }));
   };
+  const handleOpenMenu = () => {
+    dispatch(setOpenMenu(true));
+  };
   return (
     <div className={styles.page}>
       {isOpenAllertModal && <AllertModal />}
-      <SideBarMenu />
+
+      {isOpenMenu || window.screen.width >= 420 ? (
+        <SideBarMenu />
+      ) : (
+        <img
+          onClick={handleOpenMenu}
+          className={styles.menu_icon}
+          alt="Menu"
+          src={Menu}
+        />
+      )}
       <div className={styles.page_content}>
         <div className={styles.header}>
           <Button

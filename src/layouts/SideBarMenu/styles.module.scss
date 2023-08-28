@@ -10,12 +10,34 @@
   height: 100vh;
   background-color: #212155;
 }
+
+@media (max-width: 420px) {
+  .left_side_menu {
+    z-index: 10;
+  }
+}
 .logo {
   font-size: 30px;
   color: $white;
   font-weight: 600;
   line-height: 45px;
   text-align: center;
+}
+.menu_icon_container {
+  display: none;
+  justify-content: flex-end;
+  width: 90%;
+}
+@media (max-width: 420px) {
+  .menu_icon_container {
+    display: flex;
+  }
+}
+
+.menu_icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
 }
 
 .menu {

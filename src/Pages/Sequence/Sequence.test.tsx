@@ -51,7 +51,7 @@ test("Sequence Page renders correctly", async () => {
       countInLine: 2,
       stopped: false,
       type: "Doctors",
-      name: "Andrew",
+      name: "DoctorWithRoom",
       email: "ozimok1604ua@gmail.com",
       phone: "0967070545",
       allerts: ["doctor", "financial", "allert7", "allert9"],
@@ -86,7 +86,7 @@ test("Sequence Page renders correctly", async () => {
   const selectPlaceholder = screen.getByText("Select");
   expect(selectPlaceholder).toBeInTheDocument();
   fireEvent.click(selectPlaceholder);
-  const doctorOption = screen.getByText("Doctor");
+  const doctorOption = screen.getByText("DoctorWithRoom");
   await (() => {
     expect(doctorOption).toBeInTheDocument();
   });
@@ -94,6 +94,9 @@ test("Sequence Page renders correctly", async () => {
 
   const doctorRooms = screen.getByTitle("doctorRooms");
   expect(doctorRooms).toBeInTheDocument();
+  await (() => {
+    expect(screen.getByText("4r")).toBeInTheDocument();
+  });
 
   data?.forEach((room: any) => {
     const roomName = screen.getByText(room.name);
@@ -112,11 +115,26 @@ test("Sequence Page renders correctly", async () => {
   expect(addRoomButton).toBeInTheDocument();
   fireEvent.click(addRoomButton);
   expect(dispatchMock(openRoomModal({ isOpenRoomModal: true })));
+  await (() => {
+    expect(screen.getByText("Add new Room")).toBeInTheDocument();
+  });
+
+  //   const closeAddModal = screen.getByAltText("Close");
+  //   fireEvent.click(closeAddModal);
+
+  const deleteRoomButton = screen.getAllByAltText("Delete");
+  fireEvent.click(deleteRoomButton[0]);
+  await (() => {
+    expect(screen.getByText("Delete room")).toBeInTheDocument();
+  });
 
   const saveButton = screen.getByText("Save");
   expect(saveButton).toBeInTheDocument();
   fireEvent.click(saveButton);
   expect(dispatchMock(editEmployee({})));
   expect(dispatchMock(renameRooms([])));
-  expect(dispatchMock(startShowingAllert()));
+  expect(dispatchMock(startShowingAllert(true)));
+  await (() => {
+    expect(screen.getByText("Sequence is created")).toBeInTheDocument();
+  });
 });

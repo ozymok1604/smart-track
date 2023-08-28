@@ -27,7 +27,7 @@ const RoomModal = ({ type }: { type?: string }) => {
   const roomId = getRandomNumber(1000).toString();
 
   const handleSaveForm = () => {
-    type == "edit"
+    type === "edit"
       ? dispatch(
           editRoom({
             options: room?.options,
@@ -58,7 +58,7 @@ const RoomModal = ({ type }: { type?: string }) => {
         </div>
         <div className={styles.header}>
           <div className={styles.header_title}>
-            {type == "edit" ? "Edit Room" : "Add new Room"}
+            {type === "edit" ? "Edit Room" : "Add new Room"}
           </div>
         </div>
 
@@ -73,7 +73,7 @@ const RoomModal = ({ type }: { type?: string }) => {
           <Button
             onClick={handleSaveForm}
             type="primary"
-            title={type == "edit" ? "Edit" : "Save"}
+            title={type === "edit" ? "Edit" : "Save"}
           />
         </div>
       </div>

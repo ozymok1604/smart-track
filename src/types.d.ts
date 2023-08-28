@@ -111,6 +111,7 @@ type RoomModalParameters = {
 type TrackAction = {
   type: string;
   tab: Tab;
+  isOpenMenu?: IsOpen;
   count: Count;
   isOpenWardOptions: IsOpen;
   stuffModalParameters: StuffModal;
@@ -136,6 +137,7 @@ type SmartTrackState = {
   tab: string;
   isOpenWardOptions: IsOpen;
   count: Count;
+  isOpenMenu?: IsOpen;
   stuffModalParameters: StuffModal;
   employee: Employee;
   employeeData: Employee;

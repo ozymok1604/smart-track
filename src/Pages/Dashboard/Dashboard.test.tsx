@@ -9,7 +9,9 @@ test("Dashboard Page renders correctly", () => {
   const store = createStore(reducer);
   const employees = JSON.parse(localStorage.getItem("employees") || "[]");
   const getFilteredDoctors = (employees: Employee[]) => {
-    return employees.filter((employee: Employee) => employee.type == "Doctors");
+    return employees.filter(
+      (employee: Employee) => employee.type === "Doctors"
+    );
   };
   const filteredDoctors = getFilteredDoctors(employees);
   const dispatchMock = jest.fn();
