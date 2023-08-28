@@ -27,6 +27,9 @@ const Dashboard = () => {
   const handleOpenMenu = () => {
     dispatch(setOpenMenu(true));
   };
+  const handleCloseMenu = () => {
+    dispatch(setOpenMenu(false));
+  };
 
   useEffect(() => {
     setDoctors(getFilteredDoctors(employees));
@@ -46,7 +49,7 @@ const Dashboard = () => {
       )}
       {isOpen && <OptionsModal />}
 
-      <div className={styles.page_content}>
+      <div onClick={handleCloseMenu} className={styles.page_content}>
         {doctors?.map((doctor: Doctor) => (
           <DoctorLine doctor={doctor} />
         ))}

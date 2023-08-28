@@ -49,6 +49,9 @@ const Stuff = ({ testData }: { testData?: any[] }) => {
   const handleOpenAddStuffModal = () => {
     dispatch(openAddStuffModal({ type: "add", isOpen: true }));
   };
+  const handleCloseMenu = () => {
+    dispatch(setOpenMenu(false));
+  };
   return (
     <div className={styles.page}>
       {isOpenMenu || window.screen.width >= 420 ? (
@@ -62,7 +65,7 @@ const Stuff = ({ testData }: { testData?: any[] }) => {
         />
       )}
       {isOpenDeleteModal && <DeleteModal type="stuff" />}
-      <div className={styles.page_content}>
+      <div onClick={handleCloseMenu} className={styles.page_content}>
         {stuffModalParameters.isOpen && (
           <AddStuffModal employeeType={activeTab} />
         )}

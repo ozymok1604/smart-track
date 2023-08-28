@@ -223,6 +223,10 @@ const Sequence = ({
     setInterval(handleStopShowingAllert, 3000);
   };
 
+  const handleCloseMenu = () => {
+    dispatch(setOpenMenu(false));
+  };
+
   return (
     <div className={styles.page}>
       <DragDropContext
@@ -244,7 +248,7 @@ const Sequence = ({
           </div>
         )}
 
-        <div className={styles.page_content}>
+        <div onClick={handleCloseMenu} className={styles.page_content}>
           <div className={styles.header}>
             <div className={styles.select_container}>
               <div className={styles.title}>Choose a Doctor</div>

@@ -41,6 +41,9 @@ const Allerts = () => {
   const handleOpenMenu = () => {
     dispatch(setOpenMenu(true));
   };
+  const handleCloseMenu = () => {
+    dispatch(setOpenMenu(false));
+  };
   return (
     <div className={styles.page}>
       {isOpenAllertModal && <AllertModal />}
@@ -55,7 +58,7 @@ const Allerts = () => {
           src={Menu}
         />
       )}
-      <div className={styles.page_content}>
+      <div onClick={handleCloseMenu} className={styles.page_content}>
         <div className={styles.header}>
           <Button
             onClick={handleOpenAllertModal}
