@@ -14,8 +14,10 @@
 }
 @media (max-width: 420px) {
   .page_content {
-    padding: 0px;
-    margin-left: 0px;
+    padding-bottom: 30vh;
+  }
+  .page {
+    width: 119vw;
   }
 }
 

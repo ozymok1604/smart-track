@@ -59,6 +59,15 @@
   line-height: 24px;
 }
 
+@media (max-width: 420px) {
+  .name {
+    width: 90px;
+  }
+  .edit {
+    padding-left: 10px;
+  }
+}
+
 .assistantIn {
   display: flex;
   width: 35px;
